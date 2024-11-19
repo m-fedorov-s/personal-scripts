@@ -370,45 +370,55 @@ func (s *Server) Start(ctx context.Context) error {
 			loc := time.Location(s.Config.AccessSchedule.Timezone)
 			now := time.Now().In(&loc)
 			midnight := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, &loc)
-			nextTime := time.Now().Add(time.Hour * 24 * 7)
+			var nextTime *time.Time
 			for _ = range 8 {
 				weekday := Weekday(midnight.Weekday())
 				schedule, ok := s.Config.AccessSchedule.DaysSchedule[weekday]
 				if ok {
 					startTime := midnight.Add(time.Duration(schedule.Start))
-					if startTime.Before(nextTime) && now.Before(startTime) {
-						nextTime = startTime
+					if (nextTime == nil || startTime.Before(*nextTime)) && now.Before(startTime) {
+						nextTime = &startTime
 						nextCommand = OpenAccess
 					}
 					endTime := midnight.Add(time.Duration(schedule.End))
 					for _, offset := range s.Config.WarnBefore {
 						warnTime := endTime.Add(-time.Duration(offset))
-						if warnTime.Before(nextTime) && now.Before(warnTime) {
+						if (nextTime == nil || warnTime.Before(*nextTime)) && now.Before(warnTime) {
+							nextTime = &warnTime
 							nextCommand = Warn
 						}
 					}
-					if endTime.Before(nextTime) && now.Before(endTime) {
-						nextTime = endTime
+					if (nextTime == nil || endTime.Before(*nextTime)) && now.Before(endTime) {
+						nextTime = &endTime
 						nextCommand = CloseAccess
 					}
+				} else {
+					fmt.Println("No schedule for day %v", time.Weekday(weekday))
 				}
 				if time.Weekday(weekday) == time.Monday {
 					bakTime := midnight.Add(time.Hour)
-					if bakTime.Before(nextTime) && now.Before(bakTime) {
-						nextTime = bakTime
+					if (nextTime == nil || bakTime.Before(*nextTime)) && now.Before(bakTime) {
+						nextTime = &bakTime
 						nextCommand = Backup
 					}
 				}
-				midnight.Add(time.Hour * 24)
+				midnight = midnight.Add(time.Hour * 24)
 			}
-			fmt.Printf("Scheduled %v at %v\n", nextCommand, nextTime.String())
-			timer.Reset(time.Until(nextTime))
+			if nextTime == nil {
+				fmt.Println("Nothing is scheduled for the next week!")
+				timer.Reset(time.Hour)
+			} else {
+				fmt.Printf("Scheduled %v at %v\n", nextCommand, nextTime.Format("2006-01-02 at 15:04 MST"))
+				timer.Reset(time.Until(*nextTime))
+			}
 			select {
 			case <-ctx.Done():
 				return
 			case t := <-timer.C:
-				fmt.Printf("[%v Scheduler]: sending command %v\n", t, nextCommand)
-				s.innerCmds <- nextCommand
+				if nextTime != nil {
+					fmt.Printf("[%v Scheduler]: sending command %v\n", t, nextCommand)
+					s.innerCmds <- nextCommand
+				}
 			}
 		}
 	}(cmdCtx)
@@ -461,6 +471,7 @@ func (s *Server) Run() error {
 		return err
 	}
 	defer cancelRun()
+	s.innerCmds = make(chan InnerCmd)
 
 	stdIns := make(chan string)
 	scanner := bufio.NewScanner(os.Stdin)
@@ -530,7 +541,7 @@ outer:
 				case CloseAccess:
 					{
 						fmt.Println("Closing server")
-						s.inputsPipe <- "Server is closing now!"
+						s.inputsPipe <- "say Server is closing now!"
 						time.Sleep(time.Second * 5)
 						for _, player := range s.Config.Players {
 							s.inputsPipe <- fmt.Sprintf("fwhitelist remove %v", player)
