@@ -5,7 +5,6 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/json"
-	"errors"
 	"flag"
 	"fmt"
 	"io"
@@ -109,111 +108,6 @@ func BackupFolder(dir string) error {
 		return fmt.Errorf("%v\nstderr: %v", err, err.(*exec.ExitError).Stderr)
 	}
 	return nil
-}
-
-type Duration time.Duration
-
-func (d Duration) MarshalJSON() ([]byte, error) {
-	return json.Marshal(time.Duration(d).String())
-}
-
-func (d *Duration) UnmarshalJSON(b []byte) error {
-	var v interface{}
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	switch value := v.(type) {
-	case float64:
-		*d = Duration(time.Duration(value))
-		return nil
-	case string:
-		tmp, err := time.ParseDuration(value)
-		if err != nil {
-			return err
-		}
-		*d = Duration(tmp)
-		return nil
-	default:
-		return errors.New("invalid duration")
-	}
-}
-
-type TimeInterval struct {
-	Start Duration `json:"start"` // Time in HH:MM format
-	End   Duration `json:"end"`   // Time in HH:MM format
-}
-
-type Location time.Location
-
-func (l Location) MarshalJSON() ([]byte, error) {
-	tmp := time.Location(l)
-	return json.Marshal((&tmp).String())
-}
-
-func (l *Location) UnmarshalJSON(b []byte) error {
-	var v interface{}
-	if err := json.Unmarshal(b, &v); err != nil {
-		return err
-	}
-	switch value := v.(type) {
-	case string:
-		tmp, err := time.LoadLocation(value)
-		if err != nil {
-			return err
-		}
-		*l = Location(*tmp)
-		return nil
-	default:
-		return fmt.Errorf("invalid location")
-	}
-}
-
-type Weekday time.Weekday
-
-func (d Weekday) MarshalText() ([]byte, error) {
-	return json.Marshal(time.Weekday(d).String())
-}
-
-func (d *Weekday) UnmarshalText(b []byte) error {
-	switch string(b) {
-	case "Sunday":
-		*d = Weekday(time.Sunday)
-		return nil
-	case "Monday":
-		*d = Weekday(time.Monday)
-		return nil
-	case "Tuesday":
-		*d = Weekday(time.Tuesday)
-		return nil
-	case "Wednesday":
-		*d = Weekday(time.Wednesday)
-		return nil
-	case "Thursday":
-		*d = Weekday(time.Thursday)
-		return nil
-	case "Friday":
-		*d = Weekday(time.Friday)
-		return nil
-	case "Saturday":
-		*d = Weekday(time.Saturday)
-		return nil
-	default:
-		return fmt.Errorf("invalid weekday")
-	}
-}
-
-type Schedule struct {
-	Timezone     Location                 `json:"timezone"`
-	DaysSchedule map[Weekday]TimeInterval `json:"days_schedule"`
-}
-
-// Config represents the configuration with a schedule to restart the process
-type Config struct {
-	WorkDir        string     `json:"work_dir"`
-	WarnBefore     []Duration `json:"warn_before"`
-	AccessSchedule Schedule   `json:"schedule"`
-	Memory         string     `json:"memory"`
-	Players        []string   `json:"players"`
 }
 
 type ListenRequest struct {
@@ -375,12 +269,12 @@ func (s *Server) Start(ctx context.Context) error {
 				weekday := Weekday(midnight.Weekday())
 				schedule, ok := s.Config.AccessSchedule.DaysSchedule[weekday]
 				if ok {
-					startTime := midnight.Add(time.Duration(schedule.Start))
+					startTime := midnight.Add(schedule.Start.Duration())
 					if (nextTime == nil || startTime.Before(*nextTime)) && now.Before(startTime) {
 						nextTime = &startTime
 						nextCommand = OpenAccess
 					}
-					endTime := midnight.Add(time.Duration(schedule.End))
+					endTime := midnight.Add(schedule.End.Duration())
 					for _, offset := range s.Config.WarnBefore {
 						warnTime := endTime.Add(-time.Duration(offset))
 						if (nextTime == nil || warnTime.Before(*nextTime)) && now.Before(warnTime) {
@@ -544,7 +438,12 @@ outer:
 						s.inputsPipe <- "say Server is closing now!"
 						time.Sleep(time.Second * 5)
 						for _, player := range s.Config.Players {
-							s.inputsPipe <- fmt.Sprintf("fwhitelist remove %v", player)
+							switch player.Type {
+							case Java:
+								s.inputsPipe <- fmt.Sprintf("whitelist remove %v", player.Nickname)
+							case Bedrock:
+								s.inputsPipe <- fmt.Sprintf("fwhitelist remove %v", player.Nickname)
+							}
 							time.Sleep(time.Millisecond * 200)
 						}
 					}
@@ -552,7 +451,12 @@ outer:
 					{
 						fmt.Println("Opening server")
 						for _, player := range s.Config.Players {
-							s.inputsPipe <- fmt.Sprintf("fwhitelist add %v", player)
+							switch player.Type {
+							case Java:
+								s.inputsPipe <- fmt.Sprintf("whitelist add %v", player.Nickname)
+							case Bedrock:
+								s.inputsPipe <- fmt.Sprintf("fwhitelist add %v", player.Nickname)
+							}
 							time.Sleep(time.Millisecond * 200)
 						}
 					}
