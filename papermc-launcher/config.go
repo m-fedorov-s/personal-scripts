@@ -154,15 +154,24 @@ func (pt PlayerType) MarshalJSON() ([]byte, error) {
 }
 
 func (pt *PlayerType) UnmarshalJSON(b []byte) error {
-	switch string(b) {
-	case "Java":
-		*pt = Java
-		return nil
-	case "Bedrock":
-		*pt = Bedrock
-		return nil
+	var v interface{}
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	switch value := v.(type) {
+	case string:
+		switch string(value) {
+		case "Java":
+			*pt = Java
+			return nil
+		case "Bedrock":
+			*pt = Bedrock
+			return nil
+		default:
+			return fmt.Errorf("invalid player type")
+		}
 	default:
-		return fmt.Errorf("invalid player type")
+		return fmt.Errorf("Player type should be a string")
 	}
 }
 

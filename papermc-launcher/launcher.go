@@ -310,7 +310,7 @@ func (s *Server) Start(ctx context.Context) error {
 				return
 			case t := <-timer.C:
 				if nextTime != nil {
-					fmt.Printf("[%v Scheduler]: sending command %v\n", t, nextCommand)
+					fmt.Printf("[%v Scheduler]: sending command %v\n", t.Format("Jan 02 15:04"), nextCommand)
 					s.innerCmds <- nextCommand
 				}
 			}
@@ -441,8 +441,10 @@ outer:
 							switch player.Type {
 							case Java:
 								s.inputsPipe <- fmt.Sprintf("whitelist remove %v", player.Nickname)
+								s.inputsPipe <- fmt.Sprintf("kick %v Server is closed", player.Nickname)
 							case Bedrock:
 								s.inputsPipe <- fmt.Sprintf("fwhitelist remove %v", player.Nickname)
+								s.inputsPipe <- fmt.Sprintf("kick .%v Server is closed", player.Nickname)
 							}
 							time.Sleep(time.Millisecond * 200)
 						}
