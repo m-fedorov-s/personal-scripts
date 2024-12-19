@@ -3,13 +3,11 @@ package main
 import (
 	"bufio"
 	"context"
-	"crypto/sha256"
-	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io"
 	"log"
-	"net/http"
 	"os"
 	"os/exec"
 	"strings"
@@ -17,90 +15,8 @@ import (
 	"time"
 )
 
-const PAPER_API_VERSION_URL = "https://api.papermc.io/v2/projects/paper"
-const PAPER_API_BUILDS_URL_TEMPLATE = "https://api.papermc.io/v2/projects/paper/versions/%v/builds"
-const PAPER_API_JAR_DOWNLOAD_TEMPLATE = "https://api.papermc.io/v2/projects/paper/versions/%v/builds/%v/downloads/%v"
-
-func LoadFileIfDoesNotExist(url, dir, filename, checksum string) error {
-	f, err := os.OpenFile(dir+"/"+filename, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	downloadRes, err := http.Get(url)
-	if err != nil {
-		panic(err)
-		return err
-	}
-	defer downloadRes.Body.Close()
-	_, err = io.Copy(f, downloadRes.Body)
-	if err != nil {
-		return err
-	}
-	if checksum == "" {
-		return nil
-	}
-	_, err = f.Seek(0, io.SeekStart)
-	if err != nil {
-		return err
-	}
-	h := sha256.New()
-	_, err = io.Copy(h, f)
-	if err != nil {
-		return err
-	}
-	if checksum != fmt.Sprintf("%x", h.Sum(nil)) {
-		return fmt.Errorf("Sha256 does not match")
-	}
-	return nil
-}
-
-func LoadPaper(dir string) {
-	resp, err := http.Get(PAPER_API_VERSION_URL)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
-	var parsed map[string]interface{}
-	json.Unmarshal(body, &parsed)
-	version := parsed["versions"].([]interface{})[len(parsed["versions"].([]interface{}))-1].(string)
-	fmt.Println("Chosen version: " + version)
-	buildsResp, err := http.Get(fmt.Sprintf(PAPER_API_BUILDS_URL_TEMPLATE, version))
-	if err != nil {
-		panic(err)
-	}
-	defer buildsResp.Body.Close()
-	body, err = io.ReadAll(buildsResp.Body)
-	if err != nil {
-		panic(err)
-	}
-	json.Unmarshal(body, &parsed)
-	build := parsed["builds"].([]interface{})[len(parsed["builds"].([]interface{}))-1].(map[string]interface{})
-	buildNumber := int(build["build"].(float64))
-	filename := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["name"].(string)
-	checksum := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["sha256"].(string)
-	url := fmt.Sprintf(PAPER_API_JAR_DOWNLOAD_TEMPLATE, version, buildNumber, filename)
-	err = LoadFileIfDoesNotExist(url, dir, filename, checksum)
-	if os.IsExist(err) {
-		fmt.Println("Already newest paper build")
-	}
-	err = os.Remove(dir + "/paper.jar")
-	if err != nil {
-		panic(err)
-	}
-	err = os.Symlink(filename, dir+"/paper.jar")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Sucessfuly downloaded %v\n", filename)
-}
-
 func BackupFolder(dir string) error {
-	bakName := fmt.Sprintf("%v-backup-%v.tar.bz2", dir, time.Now().Format("2006-02-01_15-04_MST"))
+	bakName := fmt.Sprintf("%v-backup-%v.tar.bz2", dir, time.Now().Format("2006-01-02_15-04_MST"))
 	fmt.Printf("Backing up folder %v to %v\n", dir, bakName)
 	bakCmd := exec.Command("tar", "-cvjf", bakName, "./"+dir)
 	err := bakCmd.Run()
@@ -127,7 +43,7 @@ const (
 
 type Server struct {
 	Config        *Config
-	runCtx        context.Context
+	cmdCtx        context.Context
 	contextCancel context.CancelFunc
 	Cmd           *exec.Cmd
 	WaitWorkers   sync.WaitGroup
@@ -193,7 +109,7 @@ func (s *Server) startIOListeners(ctx context.Context) error {
 }
 
 func (s *Server) IsStarted() bool {
-	return s.runCtx != nil && s.runCtx.Err() != nil
+	return s.cmdCtx != nil && s.cmdCtx.Err() != nil
 }
 
 func (s *Server) Start(ctx context.Context) error {
@@ -204,17 +120,20 @@ func (s *Server) Start(ctx context.Context) error {
 	s.Cmd = exec.Command("java", "-Xms"+s.Config.Memory, "-Xmx"+s.Config.Memory, "-XX:+UseG1GC", "-XX:+ParallelRefProcEnabled", "-jar", "paper.jar", "nogui")
 	s.Cmd.Dir = s.Config.WorkDir
 	cmdCtx, cancel := context.WithCancel(ctx)
-	s.runCtx = cmdCtx
+	s.cmdCtx = cmdCtx
 	s.contextCancel = cancel
 	var err error
-	err = s.startIOListeners(s.runCtx)
+	err = s.startIOListeners(s.cmdCtx)
 	if err != nil {
 		return err
 	}
-	err = s.Cmd.Start()
-	if err != nil {
-		return err
-	}
+	go func() {
+		err := s.Cmd.Run()
+		if err != nil {
+			fmt.Println(err)
+		}
+		s.contextCancel()
+	}()
 	// Start listening Worker
 	s.WaitWorkers.Add(1)
 	go func(ctx context.Context) {
@@ -290,7 +209,7 @@ func (s *Server) Start(ctx context.Context) error {
 					fmt.Println("No schedule for day %v", time.Weekday(weekday))
 				}
 				if time.Weekday(weekday) == time.Monday {
-					bakTime := midnight.Add(time.Hour)
+					bakTime := midnight.Add(time.Hour * 5)
 					if (nextTime == nil || bakTime.Before(*nextTime)) && now.Before(bakTime) {
 						nextTime = &bakTime
 						nextCommand = Backup
@@ -332,28 +251,26 @@ func (s *Server) Backup() error {
 	s.inputsPipe <- "save-all"
 	<-find
 	err := BackupFolder(s.Config.WorkDir)
-	if err != nil {
-		return err
-	}
 	time.Sleep(200 * time.Millisecond)
 	s.requestsPipe <- ListenRequest{query: "Automatic saving is now enabled", accepted: notify, found: find}
 	<-notify
 	s.inputsPipe <- "save-on"
 	<-find
-	return nil
+	return err
 }
 
 func (s *Server) Stop() error {
-	s.inputsPipe <- "stop"
-	err := s.Cmd.Wait()
-	if err != nil {
-		return err
+	if s.cmdCtx == nil {
+		return fmt.Errorf("Already stopped.")
 	}
-	fmt.Println("Cmd finished successfuly!")
-	s.contextCancel()
+	if s.cmdCtx.Err() == nil {
+		s.inputsPipe <- "stop"
+		<-s.cmdCtx.Done()
+		fmt.Println("Cmd finished successfuly!")
+	}
 	s.WaitWorkers.Wait()
 	s.Cmd = nil
-	s.runCtx = nil
+	s.cmdCtx = nil
 	s.contextCancel = nil
 	return nil
 }
@@ -382,6 +299,11 @@ func (s *Server) Run() error {
 outer:
 	for {
 		select {
+		case <-s.cmdCtx.Done():
+			{
+				fmt.Println("[ERROR] Server exited unexpectedly.")
+				break outer
+			}
 		case input := <-stdIns:
 			{
 				switch input {
@@ -397,6 +319,10 @@ outer:
 							panic(err)
 						}
 						LoadPaper(s.Config.WorkDir)
+						err = LoadGeyser(s.Config.WorkDir)
+						if err != nil {
+							fmt.Printf("Error downloading geyser: %v\n", err)
+						}
 						err = s.Start(runCtx)
 						if err != nil {
 							panic(err)
@@ -485,23 +411,6 @@ outer:
 	return s.Stop()
 }
 
-// LoadConfig loads the configuration from a JSON file
-func LoadConfig(filename string) (Config, error) {
-	file, err := os.Open(filename)
-	if err != nil {
-		return Config{}, fmt.Errorf("error opening config file: %w", err)
-	}
-	defer file.Close()
-
-	var config Config
-	decoder := json.NewDecoder(file)
-	if err := decoder.Decode(&config); err != nil {
-		return Config{}, fmt.Errorf("error decoding config: %w", err)
-	}
-
-	return config, nil
-}
-
 func main() {
 	configFilePtr := flag.String("config", "config.json", "path to the config file")
 	flag.Parse()
@@ -509,7 +418,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	LoadPaper(config.WorkDir)
+	os.MkdirAll(config.WorkDir, os.ModePerm)
+	if _, err := os.Stat(config.WorkDir + "/paper.jar"); errors.Is(err, os.ErrNotExist) {
+		LoadPaper(config.WorkDir)
+	}
 	server := Server{Config: &config, requestsPipe: make(chan ListenRequest)}
 	err = server.Run()
 	if err != nil {

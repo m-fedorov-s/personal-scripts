@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -180,11 +181,26 @@ type Player struct {
 	Nickname string     `json:"nickname"`
 }
 
-// Config represents the configuration with a schedule to restart the process
 type Config struct {
 	WorkDir        string     `json:"work_dir"`
 	WarnBefore     []Duration `json:"warn_before"`
 	AccessSchedule Schedule   `json:"schedule"`
 	Memory         string     `json:"memory"`
 	Players        []Player   `json:"players"`
+}
+
+func LoadConfig(filename string) (Config, error) {
+	file, err := os.Open(filename)
+	if err != nil {
+		return Config{}, fmt.Errorf("error opening config file: %w", err)
+	}
+	defer file.Close()
+
+	var config Config
+	decoder := json.NewDecoder(file)
+	if err := decoder.Decode(&config); err != nil {
+		return Config{}, fmt.Errorf("error decoding config: %w", err)
+	}
+
+	return config, nil
 }
