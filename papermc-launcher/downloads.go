@@ -128,12 +128,16 @@ func LoadPaper(dir string) {
 	json.Unmarshal(body, &parsed)
 	build := parsed["builds"].([]interface{})[len(parsed["builds"].([]interface{}))-1].(map[string]interface{})
 	buildNumber := int(build["build"].(float64))
+	if info.PaperVer.Build > 0 && info.PaperVer.Build == buildNumber {
+		fmt.Println("Already latest paper build")
+		return
+	}
 	filename := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["name"].(string)
 	checksum := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["sha256"].(string)
 	url := fmt.Sprintf(PAPER_API_JAR_DOWNLOAD_TEMPLATE, version, buildNumber, filename)
 	err = LoadFileIfDoesNotExist(url, dir, filename, checksum)
-	if os.IsExist(err) {
-		fmt.Println("Already newest paper build")
+	if err != nil && !os.IsExist(err) {
+		panic(err)
 	}
 	err = os.Remove(dir + "/paper.jar")
 	if err != nil && !errors.Is(err, os.ErrNotExist) {
@@ -146,5 +150,8 @@ func LoadPaper(dir string) {
 	info.PaperVer.Version = version
 	info.PaperVer.Build = buildNumber
 	err = DumpVersionsInfo(info)
+	if err != nil {
+		panic(err)
+	}
 	fmt.Printf("Sucessfuly downloaded %v\n", filename)
 }

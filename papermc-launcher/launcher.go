@@ -10,6 +10,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"os/signal"
 	"strings"
 	"sync"
 	"time"
@@ -44,6 +45,7 @@ const (
 type Server struct {
 	Config        *Config
 	cmdCtx        context.Context
+	runningCtx    context.Context
 	contextCancel context.CancelFunc
 	Cmd           *exec.Cmd
 	WaitWorkers   sync.WaitGroup
@@ -122,8 +124,10 @@ func (s *Server) Start(ctx context.Context) error {
 	cmdCtx, cancel := context.WithCancel(ctx)
 	s.cmdCtx = cmdCtx
 	s.contextCancel = cancel
+	runningCtx, cancelRunning := context.WithCancel(context.TODO())
+	s.runningCtx = runningCtx
 	var err error
-	err = s.startIOListeners(s.cmdCtx)
+	err = s.startIOListeners(s.runningCtx)
 	if err != nil {
 		return err
 	}
@@ -132,7 +136,7 @@ func (s *Server) Start(ctx context.Context) error {
 		if err != nil {
 			fmt.Println(err)
 		}
-		s.contextCancel()
+		cancelRunning()
 	}()
 	// Start listening Worker
 	s.WaitWorkers.Add(1)
@@ -170,7 +174,7 @@ func (s *Server) Start(ctx context.Context) error {
 				}
 			}
 		}
-	}(cmdCtx)
+	}(runningCtx)
 
 	// Start scheduling worker
 	s.WaitWorkers.Add(1)
@@ -263,11 +267,12 @@ func (s *Server) Stop() error {
 	if s.cmdCtx == nil {
 		return fmt.Errorf("Already stopped.")
 	}
-	if s.cmdCtx.Err() == nil {
+	if s.runningCtx.Err() == nil {
 		s.inputsPipe <- "stop"
-		<-s.cmdCtx.Done()
+		<-s.runningCtx.Done()
 		fmt.Println("Cmd finished successfuly!")
 	}
+	s.contextCancel()
 	s.WaitWorkers.Wait()
 	s.Cmd = nil
 	s.cmdCtx = nil
@@ -282,6 +287,14 @@ func (s *Server) Run() error {
 		return err
 	}
 	defer cancelRun()
+
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt)
+	go func() {
+		<-c
+		cancelRun()
+	}()
+
 	s.innerCmds = make(chan InnerCmd)
 
 	stdIns := make(chan string)
@@ -299,7 +312,7 @@ func (s *Server) Run() error {
 outer:
 	for {
 		select {
-		case <-s.cmdCtx.Done():
+		case <-s.runningCtx.Done():
 			{
 				fmt.Println("[ERROR] Server exited unexpectedly.")
 				break outer

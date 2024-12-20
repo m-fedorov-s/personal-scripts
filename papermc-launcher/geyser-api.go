@@ -81,7 +81,6 @@ func GetLatestBuild(id, ver string) (BuildInfo, error) {
 }
 
 func LoadGeyser(dir string) error {
-	fmt.Println("Loading geyser")
 	info, err := LoadVersionsInfo()
 	if err != nil {
 		fmt.Printf("[WARN] Failed to read versions info from %v\n", VERSIONS_FILE)
@@ -100,12 +99,13 @@ func LoadGeyser(dir string) error {
 		return err
 	}
 	if ver.Build > 0 && ver.Build == latestBuild.Build {
-		fmt.Println("Geyser already latest build")
+		fmt.Println("Already latest build of geyser")
 		return nil
 	}
+	platform := "spigot"
+	fmt.Printf("Downloading geyser version %v build #%v for %v", latestVer, latestBuild.Build, platform)
 	checksum := latestBuild.Downloads["spigot"].Sha256
-	url := fmt.Sprintf(GEYSER_API_DOWNLOAD_URL, "geyser", latestVer, latestBuild.Build, "spigot")
-	fmt.Printf("Hitting url %v\n", url)
+	url := fmt.Sprintf(GEYSER_API_DOWNLOAD_URL, "geyser", latestVer, latestBuild.Build, platform)
 	err = LoadFileIfDoesNotExist(url, loadDir, "Geyser-Spigot.jar", checksum)
 	if err != nil && !os.IsExist(err) {
 		return err
@@ -118,6 +118,5 @@ func LoadGeyser(dir string) error {
 		Build:   latestBuild.Build,
 	}
 	err = DumpVersionsInfo(info)
-
 	return err
 }
