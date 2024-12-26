@@ -17,9 +17,9 @@ import (
 )
 
 func BackupFolder(dir string) error {
-	bakName := fmt.Sprintf("%v-backup-%v.tar.bz2", dir, time.Now().Format("2006-01-02_15-04_MST"))
+	bakName := fmt.Sprintf("%v-backup-%v.tar.zst", dir, time.Now().Format("2006_01_02-15_04_MST"))
 	fmt.Printf("Backing up folder %v to %v\n", dir, bakName)
-	bakCmd := exec.Command("tar", "-cvjf", bakName, "./"+dir)
+	bakCmd := exec.Command("tar", "--zstd", "-cf", bakName, "./"+dir)
 	err := bakCmd.Run()
 	if err != nil {
 		return fmt.Errorf("%v\nstderr: %v", err, err.(*exec.ExitError).Stderr)
