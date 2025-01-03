@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/gob"
-	"fmt"
 	"log/slog"
 	"time"
 
@@ -27,25 +26,6 @@ func Encode(o any) ([]byte, error) {
 	encoder := gob.NewEncoder(&buf)
 	err := encoder.Encode(o)
 	return buf.Bytes(), err
-}
-
-type ChatProfile struct {
-	TopicID        int
-	DayLimit       int64
-	CurrentBalance int64
-	LastRecordTime time.Time
-	MaxRecordID    int64
-}
-
-func (cp *ChatProfile) Describe() string {
-	return fmt.Sprintf("Your current balance: %v", cp.CurrentBalance)
-}
-
-func (cp *ChatProfile) DecodeFrom(data []byte) error {
-	buf := bytes.NewBuffer(data)
-	decoder := gob.NewDecoder(buf)
-	err := decoder.Decode(cp)
-	return err
 }
 
 func GetChat(txn *badger.Txn, id int64) (ChatProfile, error) {
@@ -84,21 +64,4 @@ func SetChat(txn *badger.Txn, id int64, cp *ChatProfile) error {
 	}
 	txn.Set(key, value)
 	return nil
-}
-
-func (cp *ChatProfile) ConsumeRecord(r Record) {
-	if cp.LastRecordTime.Before(r.Date) {
-		slog.Debug("Pushing up last date")
-		if cp.LastRecordTime.Month() != r.Date.Month() {
-			cp.CurrentBalance = 0
-		} else if cp.LastRecordTime.Day() != r.Date.Day() {
-			daysPassed := int64(r.Date.Day() - cp.LastRecordTime.Day())
-			slog.Debug(fmt.Sprintf("Upping up balance by %v"))
-			cp.CurrentBalance += cp.DayLimit * daysPassed
-		}
-		cp.LastRecordTime = r.Date
-	}
-	if cp.LastRecordTime.Month() == r.Date.Month() {
-		cp.CurrentBalance -= int64(r.Amount)
-	}
 }

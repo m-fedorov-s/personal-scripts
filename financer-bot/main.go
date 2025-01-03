@@ -45,6 +45,9 @@ func main() {
 		bot.WithDefaultHandler(getMessageHandler(db)),
 		bot.WithMessageTextHandler("/start", bot.MatchTypeExact, getStartHandler(db)),
 		bot.WithMessageTextHandler("/setLimit", bot.MatchTypePrefix, getSetLimitHandler(db)),
+		bot.WithMessageTextHandler("/setBalance", bot.MatchTypePrefix, getSetBalanceHandler(db)),
+		bot.WithMessageTextHandler("/report", bot.MatchTypeExact, getReportHandler(db)),
+		bot.WithMessageTextHandler("/toggleReport", bot.MatchTypeExact, getToggleReportsHandler(db)),
 	}
 	b, err := bot.New(token, opts...)
 	if err != nil {
@@ -82,20 +85,20 @@ func ParseMessage(text string) []Record {
 			continue
 		}
 		nameBits := make([]string, 0, len(parts)-1)
-		var amount uint32 = 0
+		var amount int32 = 0
 		for _, part := range parts {
 			parsed, err := strconv.ParseInt(part, 10, 32)
 			if err != nil {
 				nameBits = append(nameBits, part)
 			} else {
-				amount = uint32(parsed)
+				amount = int32(parsed)
 			}
 		}
 		if amount > 0 {
 			result = append(result, Record{
 				Date:   date,
 				Name:   strings.Join(nameBits, " "),
-				Amount: amount,
+				Amount: uint32(amount),
 			})
 		}
 	}
@@ -122,9 +125,8 @@ func getMessageHandler(db *badger.DB) func(context.Context, *bot.Bot, *models.Up
 			if err != nil {
 				return err
 			}
-			slog.Debug(fmt.Sprintf("GetChatProfile: %v", chatSettings))
+			slog.Debug(fmt.Sprintf("GetChatProfile: %+v", chatSettings))
 			if chatSettings.TopicID != 0 && update.Message.MessageThreadID != chatSettings.TopicID {
-				slog.Debug("Message from different topic", "chatID", chatID)
 				return ChatTopicMismatch
 			}
 			records := ParseMessage(update.Message.Text)
@@ -167,16 +169,16 @@ func getMessageHandler(db *badger.DB) func(context.Context, *bot.Bot, *models.Up
 				ReplyToMessageID: update.Message.ID,
 				Text:             "Internal server error",
 			})
-		} else {
+		} else if chatSettings.ImmediateReports {
 			_, err = b.SendMessage(ctx, &bot.SendMessageParams{
 				ChatID:           update.Message.Chat.ID,
 				MessageThreadID:  update.Message.MessageThreadID,
 				ReplyToMessageID: update.Message.ID,
-				Text:             chatSettings.Describe(),
+				Text:             chatSettings.Report(),
 			})
-		}
-		if err != nil {
-			slog.Error("Failed to send message: %v", err)
+			if err != nil {
+				slog.Error("Failed to send message: %v", err)
+			}
 		}
 	}
 }
@@ -198,17 +200,17 @@ func getStartHandler(db *badger.DB) func(context.Context, *bot.Bot, *models.Upda
 		})
 		if err != nil {
 			slog.Error("Error starting chat", "chatID", chatID, "error", err)
+		} else {
+			_, err = b.SendMessage(ctx, &bot.SendMessageParams{
+				ChatID:           chatID,
+				MessageThreadID:  update.Message.MessageThreadID,
+				ReplyToMessageID: update.Message.ID,
+				Text:             "Your chat is sucessfully registered!",
+			})
+			if err != nil {
+				slog.Error("Failed to send message", "error", err)
+			}
 		}
-		_, err = b.SendMessage(ctx, &bot.SendMessageParams{
-			ChatID:           chatID,
-			MessageThreadID:  update.Message.MessageThreadID,
-			ReplyToMessageID: update.Message.ID,
-			Text:             "Your chat is sucessfully registered!",
-		})
-		if err != nil {
-			slog.Error("Failed to send message", "error", err)
-		}
-
 	}
 }
 
@@ -237,15 +239,119 @@ func getSetLimitHandler(db *badger.DB) func(context.Context, *bot.Bot, *models.U
 		})
 		if err != nil {
 			slog.Error("Error setting limits for chat", "chatID", chatID, "error", err)
+		} else {
+			_, err = b.SendMessage(ctx, &bot.SendMessageParams{
+				ChatID:           chatID,
+				MessageThreadID:  update.Message.MessageThreadID,
+				ReplyToMessageID: update.Message.ID,
+				Text:             fmt.Sprintf("New dayly limit:  %v", limit),
+			})
+			if err != nil {
+				slog.Error("Failed to send message", "error", err)
+			}
 		}
-		_, err = b.SendMessage(ctx, &bot.SendMessageParams{
-			ChatID:           chatID,
-			MessageThreadID:  update.Message.MessageThreadID,
-			ReplyToMessageID: update.Message.ID,
-			Text:             fmt.Sprintf("New dayly limit:  %v", limit),
+	}
+}
+
+func getReportHandler(db *badger.DB) func(context.Context, *bot.Bot, *models.Update) {
+	return func(ctx context.Context, b *bot.Bot, update *models.Update) {
+		if update.Message.Chat.Type == "private" {
+			return
+		}
+		chatID := update.Message.Chat.ID
+		var chatSettings ChatProfile
+		err := db.Update(func(txn *badger.Txn) error {
+			var err error
+			chatSettings, err = GetChat(txn, chatID)
+			if err != nil {
+				return err
+			}
+			return err
+		})
+
+		if err != nil {
+			slog.Error("Error reading chat profile.", "chatID", chatID, "error", err)
+		} else {
+			_, err = b.SendMessage(ctx, &bot.SendMessageParams{
+				ChatID:           chatID,
+				MessageThreadID:  update.Message.MessageThreadID,
+				ReplyToMessageID: update.Message.ID,
+				Text:             chatSettings.Report(),
+			})
+			if err != nil {
+				slog.Error("Failed to send message", "error", err)
+			}
+		}
+	}
+}
+
+func getSetBalanceHandler(db *badger.DB) func(context.Context, *bot.Bot, *models.Update) {
+	return func(ctx context.Context, b *bot.Bot, update *models.Update) {
+		if update.Message.Chat.Type == "private" {
+			return
+		}
+		chatID := update.Message.Chat.ID
+		parts := strings.Fields(update.Message.Text)
+		if len(parts) != 2 {
+			return
+		}
+		newBalance, err := strconv.ParseFloat(parts[1], 32)
+		if err != nil {
+			return
+		}
+		err = db.Update(func(txn *badger.Txn) error {
+			chatSettings, err := GetChat(txn, chatID)
+			if err != nil {
+				return err
+			}
+			chatSettings.CurrentBalance = int64(newBalance)
+			chatSettings.LastRecordTime = time.Now()
+			err = SetChat(txn, chatID, &chatSettings)
+			return err
 		})
 		if err != nil {
-			slog.Error("Failed to send message", "error", err)
+			slog.Error("Error setting balance for chat", "chatID", chatID, "error", err)
+		} else {
+			_, err = b.SendMessage(ctx, &bot.SendMessageParams{
+				ChatID:           chatID,
+				MessageThreadID:  update.Message.MessageThreadID,
+				ReplyToMessageID: update.Message.ID,
+				Text:             fmt.Sprintf("Set current balance:  %v", newBalance),
+			})
+			if err != nil {
+				slog.Error("Failed to send message", "error", err)
+			}
+		}
+	}
+}
+
+func getToggleReportsHandler(db *badger.DB) func(context.Context, *bot.Bot, *models.Update) {
+	return func(ctx context.Context, b *bot.Bot, update *models.Update) {
+		if update.Message.Chat.Type == "private" {
+			return
+		}
+		chatID := update.Message.Chat.ID
+		err := db.Update(func(txn *badger.Txn) error {
+			chatSettings, err := GetChat(txn, chatID)
+			if err != nil {
+				return err
+			}
+			chatSettings.ImmediateReports = !chatSettings.ImmediateReports
+			err = SetChat(txn, chatID, &chatSettings)
+			return err
+		})
+		if err != nil {
+			slog.Error("Error setting balance for chat", "chatID", chatID, "error", err)
+		} else {
+			_, err = b.SendMessage(ctx, &bot.SendMessageParams{
+				ChatID:           chatID,
+				MessageThreadID:  update.Message.MessageThreadID,
+				ReplyToMessageID: update.Message.ID,
+				Text:             "Done",
+			})
+			if err != nil {
+				slog.Error("Failed to send message", "error", err)
+			}
 		}
 	}
 }
