@@ -223,7 +223,7 @@ func (s *Server) Start(ctx context.Context) error {
 						nextCommand = CloseAccess
 					}
 				} else {
-					fmt.Println("No schedule for day %v", time.Weekday(weekday))
+					fmt.Printf("No schedule for day %v\n", time.Weekday(weekday))
 				}
 				if time.Weekday(weekday) == time.Monday {
 					bakTime := midnight.Add(time.Hour * 5)
@@ -344,7 +344,23 @@ outer:
 							fmt.Printf("Error during back up: %v\n", err)
 							panic(err)
 						}
+
+						info, err := LoadVersionsInfo(VERSIONS_FILE)
 						LoadPaper(s.Config.WorkDir)
+						for plugin, _ := range info.Plugins {
+							var err error
+							switch plugin {
+							case "geyser":
+								err = LoadGeyser(s.Config.WorkDir)
+							case "floodgate":
+								err = LoadFloodgate(s.Config.WorkDir)
+							default:
+								err = fmt.Errorf("Unknown plugin name: %v", plugin)
+							}
+							if err != nil {
+								fmt.Printf("[WARN] Failed to load %v plugin: %v", plugin, err)
+							}
+						}
 						err = LoadGeyser(s.Config.WorkDir)
 						if err != nil {
 							fmt.Printf("Error downloading geyser: %v\n", err)

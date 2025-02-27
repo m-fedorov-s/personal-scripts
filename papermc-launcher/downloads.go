@@ -15,7 +15,7 @@ const PAPER_API_VERSION_URL = "https://api.papermc.io/v2/projects/paper"
 const PAPER_API_BUILDS_URL_TEMPLATE = "https://api.papermc.io/v2/projects/paper/versions/%v/builds"
 const PAPER_API_JAR_DOWNLOAD_TEMPLATE = "https://api.papermc.io/v2/projects/paper/versions/%v/builds/%v/downloads/%v"
 
-const VERSIONS_FILE = "version.json"
+const VERSIONS_FILE = "versions.json"
 
 type VersionInfo struct {
 	Version string `json:"version"`
@@ -28,8 +28,8 @@ type VersionsInfo struct {
 }
 
 // LoadConfig loads the configuration from a JSON file
-func LoadVersionsInfo() (VersionsInfo, error) {
-	file, err := os.Open(VERSIONS_FILE)
+func LoadVersionsInfo(versionsFile string) (VersionsInfo, error) {
+	file, err := os.Open(versionsFile)
 	if err != nil {
 		return VersionsInfo{}, fmt.Errorf("error opening versions_info file: %w", err)
 	}
@@ -44,8 +44,8 @@ func LoadVersionsInfo() (VersionsInfo, error) {
 	return info, nil
 }
 
-func DumpVersionsInfo(info VersionsInfo) error {
-	f, err := os.OpenFile(VERSIONS_FILE, os.O_RDWR|os.O_CREATE, 0644)
+func DumpVersionsInfo(info VersionsInfo, versionsFile string) error {
+	f, err := os.OpenFile(versionsFile, os.O_RDWR|os.O_CREATE, 0644)
 	if err != nil {
 		return err
 	}
@@ -91,7 +91,7 @@ func LoadFileIfDoesNotExist(url, dir, filename, checksum string) error {
 }
 
 func LoadPaper(dir string) {
-	info, err := LoadVersionsInfo()
+	info, err := LoadVersionsInfo(VERSIONS_FILE)
 	if err != nil {
 		fmt.Printf("[WARN] Failed to read versions info from %v\n", VERSIONS_FILE)
 	}
@@ -149,7 +149,7 @@ func LoadPaper(dir string) {
 	}
 	info.PaperVer.Version = version
 	info.PaperVer.Build = buildNumber
-	err = DumpVersionsInfo(info)
+	err = DumpVersionsInfo(info, VERSIONS_FILE)
 	if err != nil {
 		panic(err)
 	}
