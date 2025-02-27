@@ -115,7 +115,7 @@ func LoadGeyserPlugin(dir, pluginName, versionsFile string) error {
 	if info.Plugins == nil {
 		info.Plugins = make(map[string]VersionInfo)
 	}
-	info.Plugins["geyser"] = VersionInfo{
+	info.Plugins[pluginName] = VersionInfo{
 		Version: latestVer,
 		Build:   latestBuild.Build,
 	}

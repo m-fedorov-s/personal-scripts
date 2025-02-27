@@ -361,10 +361,6 @@ outer:
 								fmt.Printf("[WARN] Failed to load %v plugin: %v", plugin, err)
 							}
 						}
-						err = LoadGeyser(s.Config.WorkDir)
-						if err != nil {
-							fmt.Printf("Error downloading geyser: %v\n", err)
-						}
 						err = s.Start(runCtx)
 						if err != nil {
 							panic(err)
