@@ -119,22 +119,30 @@ func (s *Server) Start(ctx context.Context) error {
 		return fmt.Errorf("Already started")
 	}
 	fmt.Println("Starting process")
-	s.Cmd = exec.Command(
-		"java",
-		"-Xms"+s.Config.Memory,
-		"-Xmx"+s.Config.Memory,
+	args := []string{
+		"-Xms" + s.Config.Memory,
+		"-Xmx" + s.Config.Memory,
 		"-XX:+DisableExplicitGC",
 		"-XX:+AlwaysPreTouch",
-		"-XX:+UseG1GC",
-		"-XX:+ParallelRefProcEnabled",
 		"-XX:+UnlockExperimentalVMOptions",
-		"-XX:G1NewSizePercent=25",
-		"-XX:G1HeapRegionSize=16M",
-		"-XX:MaxTenuringThreshold=1",
-		"-XX:SurvivorRatio=20",
-		"-XX:MaxGCPauseMillis=125",
-		"-jar", "paper.jar", "nogui",
-	)
+	}
+	if s.Config.GC == "shenandoah" {
+		args = append(args, []string{
+			"-XX:+UseShenandoahGC",
+		}...)
+	} else {
+		args = append(args, []string{
+			"-XX:+UseG1GC",
+			"-XX:+ParallelRefProcEnabled",
+			"-XX:G1NewSizePercent=25",
+			"-XX:G1HeapRegionSize=8M",
+			"-XX:MaxTenuringThreshold=1",
+			"-XX:SurvivorRatio=20",
+			"-XX:MaxGCPauseMillis=125",
+		}...)
+	}
+	args = append(args, "-jar", "paper.jar", "nogui")
+	s.Cmd = exec.Command("java", args...)
 	s.Cmd.Dir = s.Config.WorkDir
 	cmdCtx, cancel := context.WithCancel(ctx)
 	s.cmdCtx = cmdCtx

@@ -187,6 +187,7 @@ type Config struct {
 	AccessSchedule Schedule   `json:"schedule"`
 	Memory         string     `json:"memory"`
 	Players        []Player   `json:"players"`
+	GC             string     `json:"gc"`
 }
 
 func LoadConfig(filename string) (Config, error) {
