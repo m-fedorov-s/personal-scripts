@@ -130,7 +130,14 @@ func (s *Server) Start(ctx context.Context) error {
 		args = append(args, []string{
 			"-XX:+UseShenandoahGC",
 		}...)
+	} else if s.Config.GC == "zgc" {
+		args = append(args, []string{
+			"-XX:+UseZGC",
+		}...)
 	} else {
+		if s.Config.GC != "g1gc" {
+			fmt.Printf("Unknown garbage collector: %v! Using G1GC as fallback.", s.Config.GC)
+		}
 		args = append(args, []string{
 			"-XX:+UseG1GC",
 			"-XX:+ParallelRefProcEnabled",
