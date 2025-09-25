@@ -1,10 +1,13 @@
 package main
 
 import (
+	"crypto/sha1"
 	"crypto/sha256"
+	"crypto/sha512"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"hash"
 	"io"
 	"net/http"
 	"os"
@@ -17,6 +20,19 @@ const PAPER_API_JAR_DOWNLOAD_TEMPLATE = "https://api.papermc.io/v2/projects/pape
 
 const VERSIONS_FILE = "versions.json"
 
+type ChecksumType int
+
+const (
+	SHA1 ChecksumType = iota
+	SHA256
+	SHA512
+)
+
+type Checksum struct {
+	Type  ChecksumType
+	Value string
+}
+
 type VersionInfo struct {
 	Version string `json:"version"`
 	Build   int    `json:"build"`
@@ -27,7 +43,6 @@ type VersionsInfo struct {
 	Plugins  map[string]VersionInfo `json:"plugins,omitempty"`
 }
 
-// LoadConfig loads the configuration from a JSON file
 func LoadVersionsInfo(versionsFile string) (VersionsInfo, error) {
 	file, err := os.Open(versionsFile)
 	if err != nil {
@@ -56,7 +71,7 @@ func DumpVersionsInfo(info VersionsInfo, versionsFile string) error {
 	return err
 }
 
-func LoadFileIfDoesNotExist(url, dir, filename, checksum string) error {
+func LoadFileIfDoesNotExist(url, dir, filename string, checksum Checksum) error {
 	f, err := os.OpenFile(dir+"/"+filename, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
 	if err != nil {
 		return err
@@ -72,19 +87,27 @@ func LoadFileIfDoesNotExist(url, dir, filename, checksum string) error {
 	if err != nil {
 		return err
 	}
-	if checksum == "" {
+	if checksum.Value == "" || (checksum.Type != SHA1 && checksum.Type != SHA256 && checksum.Type != SHA512) {
 		return nil
 	}
 	_, err = f.Seek(0, io.SeekStart)
 	if err != nil {
 		return err
 	}
-	h := sha256.New()
+	var h hash.Hash
+	switch checksum.Type {
+	case SHA1:
+		h = sha1.New()
+	case SHA256:
+		h = sha256.New()
+	case SHA512:
+		h = sha512.New()
+	}
 	_, err = io.Copy(h, f)
 	if err != nil {
 		return err
 	}
-	if checksum != fmt.Sprintf("%x", h.Sum(nil)) {
+	if checksum.Value != fmt.Sprintf("%x", h.Sum(nil)) {
 		return fmt.Errorf("Sha256 does not match")
 	}
 	return nil
@@ -133,7 +156,10 @@ func LoadPaper(dir string) {
 		return
 	}
 	filename := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["name"].(string)
-	checksum := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["sha256"].(string)
+	checksum := Checksum{
+		Type:  SHA256,
+		Value: build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["sha256"].(string),
+	}
 	url := fmt.Sprintf(PAPER_API_JAR_DOWNLOAD_TEMPLATE, version, buildNumber, filename)
 	err = LoadFileIfDoesNotExist(url, dir, filename, checksum)
 	if err != nil && !os.IsExist(err) {

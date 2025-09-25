@@ -84,7 +84,7 @@ func LoadGeyserPlugin(dir, pluginName, versionsFile string) error {
 	fmt.Printf("Updating %v...\n", pluginName)
 	info, err := LoadVersionsInfo(versionsFile)
 	if err != nil {
-		fmt.Printf("[WARN] Failed to read versions info from %v\n", VERSIONS_FILE)
+		fmt.Printf("[WARN] Failed to read versions info from %v\n", versionsFile)
 	}
 	loadDir := dir + "/plugins"
 	ver, ok := info.Plugins[pluginName]
@@ -105,7 +105,10 @@ func LoadGeyserPlugin(dir, pluginName, versionsFile string) error {
 	}
 	platform := "spigot"
 	fmt.Printf("Downloading %v version %v build #%v for %v\n", pluginName, latestVer, latestBuild.Build, platform)
-	checksum := latestBuild.Downloads["spigot"].Sha256
+	checksum := Checksum{
+		Type:  SHA256,
+		Value: latestBuild.Downloads["spigot"].Sha256,
+	}
 	url := fmt.Sprintf(GEYSER_API_DOWNLOAD_URL, pluginName, latestVer, latestBuild.Build, platform)
 	filename := fmt.Sprintf("%v-spigot.jar", pluginName)
 	err = LoadFileIfDoesNotExist(url, loadDir, filename, checksum)

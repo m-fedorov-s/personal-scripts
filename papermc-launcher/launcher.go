@@ -372,7 +372,7 @@ outer:
 							case "floodgate":
 								err = LoadFloodgate(s.Config.WorkDir)
 							default:
-								err = fmt.Errorf("Unknown plugin name: %v", plugin)
+								err = LoadModrinthPlugin(s.Config.WorkDir, plugin, VERSIONS_FILE)
 							}
 							if err != nil {
 								fmt.Printf("[WARN] Failed to load %v plugin: %v", plugin, err)
