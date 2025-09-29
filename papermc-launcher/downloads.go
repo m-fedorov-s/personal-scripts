@@ -18,8 +18,6 @@ const PAPER_API_VERSION_URL = "https://api.papermc.io/v2/projects/paper"
 const PAPER_API_BUILDS_URL_TEMPLATE = "https://api.papermc.io/v2/projects/paper/versions/%v/builds"
 const PAPER_API_JAR_DOWNLOAD_TEMPLATE = "https://api.papermc.io/v2/projects/paper/versions/%v/builds/%v/downloads/%v"
 
-const VERSIONS_FILE = "versions.json"
-
 type ChecksumType int
 
 const (
@@ -31,44 +29,6 @@ const (
 type Checksum struct {
 	Type  ChecksumType
 	Value string
-}
-
-type VersionInfo struct {
-	Version string `json:"version"`
-	Build   int    `json:"build"`
-}
-
-type VersionsInfo struct {
-	PaperVer VersionInfo            `json:"paper"`
-	Plugins  map[string]VersionInfo `json:"plugins,omitempty"`
-}
-
-func LoadVersionsInfo(versionsFile string) (VersionsInfo, error) {
-	file, err := os.Open(versionsFile)
-	if err != nil {
-		return VersionsInfo{}, fmt.Errorf("error opening versions_info file: %w", err)
-	}
-	defer file.Close()
-
-	var info VersionsInfo
-	decoder := json.NewDecoder(file)
-	if err := decoder.Decode(&info); err != nil {
-		return VersionsInfo{}, fmt.Errorf("error decoding versions_info: %w", err)
-	}
-
-	return info, nil
-}
-
-func DumpVersionsInfo(info VersionsInfo, versionsFile string) error {
-	f, err := os.OpenFile(versionsFile, os.O_RDWR|os.O_CREATE, 0644)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	enc := json.NewEncoder(f)
-	enc.SetIndent("", "  ")
-	err = enc.Encode(info)
-	return err
 }
 
 func LoadFileIfDoesNotExist(url, dir, filename string, checksum Checksum) error {
@@ -108,16 +68,12 @@ func LoadFileIfDoesNotExist(url, dir, filename string, checksum Checksum) error 
 		return err
 	}
 	if checksum.Value != fmt.Sprintf("%x", h.Sum(nil)) {
-		return fmt.Errorf("Sha256 does not match")
+		return fmt.Errorf("Checksum does not match")
 	}
 	return nil
 }
 
-func LoadPaper(dir string) {
-	info, err := LoadVersionsInfo(VERSIONS_FILE)
-	if err != nil {
-		fmt.Printf("[WARN] Failed to read versions info from %v\n", VERSIONS_FILE)
-	}
+func LoadPaper(dir string, oldMeta VersionInfo) (VersionInfo, error) {
 	resp, err := http.Get(PAPER_API_VERSION_URL)
 	if err != nil {
 		panic(err)
@@ -130,12 +86,12 @@ func LoadPaper(dir string) {
 	var parsed map[string]interface{}
 	json.Unmarshal(body, &parsed)
 	version := parsed["versions"].([]interface{})[len(parsed["versions"].([]interface{}))-1].(string)
-	if version != info.PaperVer.Version {
-		fmt.Printf("A new version of paper found: %v (current is %v). Would you like to update? [y/N]\n", version, info.PaperVer.Version)
+	if version != oldMeta.Version {
+		fmt.Printf("A new version of paper found: %v (current is %v). Would you like to update? [y/N]\n", version, oldMeta.Version)
 		var answer string
 		fmt.Scanln(&answer)
 		if strings.ToLower(answer) != "yes" && strings.ToLower(answer) != "y" {
-			version = info.PaperVer.Version
+			version = oldMeta.Version
 		}
 	}
 	fmt.Println("Chosen version: " + version)
@@ -151,9 +107,9 @@ func LoadPaper(dir string) {
 	json.Unmarshal(body, &parsed)
 	build := parsed["builds"].([]interface{})[len(parsed["builds"].([]interface{}))-1].(map[string]interface{})
 	buildNumber := int(build["build"].(float64))
-	if info.PaperVer.Build > 0 && info.PaperVer.Build == buildNumber {
+	if version == oldMeta.Version && oldMeta.Build > 0 && oldMeta.Build == buildNumber {
 		fmt.Println("Already latest paper build")
-		return
+		return oldMeta, nil
 	}
 	filename := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["name"].(string)
 	checksum := Checksum{
@@ -163,21 +119,19 @@ func LoadPaper(dir string) {
 	url := fmt.Sprintf(PAPER_API_JAR_DOWNLOAD_TEMPLATE, version, buildNumber, filename)
 	err = LoadFileIfDoesNotExist(url, dir, filename, checksum)
 	if err != nil && !os.IsExist(err) {
-		panic(err)
+		return VersionInfo{}, err
 	}
 	err = os.Remove(dir + "/paper.jar")
 	if err != nil && !errors.Is(err, os.ErrNotExist) {
-		panic(err)
+		return VersionInfo{}, err
 	}
 	err = os.Symlink(filename, dir+"/paper.jar")
 	if err != nil {
-		panic(err)
-	}
-	info.PaperVer.Version = version
-	info.PaperVer.Build = buildNumber
-	err = DumpVersionsInfo(info, VERSIONS_FILE)
-	if err != nil {
-		panic(err)
+		return VersionInfo{}, err
 	}
 	fmt.Printf("Sucessfuly downloaded %v\n", filename)
+	return VersionInfo{
+		Version: version,
+		Build:   buildNumber,
+	}, nil
 }

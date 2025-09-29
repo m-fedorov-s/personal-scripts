@@ -77,24 +77,19 @@ func GetLatestVersionFromModrinth(project string, loader string) (ModrinthVersio
 	return GetLatestVersionFromModrinthImpl(MODRINTH_VERSION_API, project, loader)
 }
 
-func LoadModrinthPlugin(dir, projectName, versionsFile string) error {
+func LoadModrinthPlugin(dir, projectName string, oldMeta *VersionInfo) (VersionInfo, error) {
 	fmt.Printf("Updating %v...", projectName)
-	info, err := LoadVersionsInfo(versionsFile)
-	if err != nil {
-		fmt.Printf("[WARN] Failed to read versions info from %v\n", versionsFile)
-	}
 	loadDir := dir + "/plugins"
-	ver, ok := info.Plugins[projectName]
-	if ok {
+	if oldMeta != nil {
 		loadDir += "/update"
 	}
 	latestVersion, err := GetLatestVersionFromModrinth(projectName, "paper")
 	if err != nil {
-		return err
+		return VersionInfo{}, err
 	}
-	if latestVersion.VersionNumber == ver.Version {
+	if latestVersion.VersionNumber == oldMeta.Version {
 		fmt.Printf("Already newest version of %v\n", projectName)
-		return nil
+		return *oldMeta, nil
 	}
 	fmt.Printf("Downloading %v version %v", projectName, latestVersion.VersionNumber)
 	checksum := Checksum{
@@ -105,14 +100,9 @@ func LoadModrinthPlugin(dir, projectName, versionsFile string) error {
 	filename := latestVersion.Files[0].Filename
 	err = LoadFileIfDoesNotExist(url, loadDir, filename, checksum)
 	if err != nil && !os.IsExist(err) {
-		return err
+		return VersionInfo{}, err
 	}
-	if info.Plugins == nil {
-		info.Plugins = make(map[string]VersionInfo)
-	}
-	info.Plugins[projectName] = VersionInfo{
+	return VersionInfo{
 		Version: latestVersion.VersionNumber,
-	}
-	err = DumpVersionsInfo(info, versionsFile)
-	return err
+	}, nil
 }

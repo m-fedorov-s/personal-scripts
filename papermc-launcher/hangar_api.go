@@ -100,35 +100,30 @@ func GetVersionInfoHangar(project, version string) (HangarVersionInfo, error) {
 	return GetVersionInfoHangarImpl(HANGAR_API_VERSION_INFO, project, version)
 }
 
-func LoadHangarPlugin(dir, projectName, versionsFile string) error {
+func LoadHangarPlugin(dir, projectName string, oldMeta *VersionInfo) (VersionInfo, error) {
 	fmt.Printf("Updating %v...", projectName)
-	info, err := LoadVersionsInfo(versionsFile)
-	if err != nil {
-		fmt.Printf("[WARN] Failed to read versions info from %v\n", versionsFile)
-	}
 	loadDir := dir + "/plugins"
-	ver, ok := info.Plugins[projectName]
-	if ok {
+	if oldMeta != nil {
 		loadDir += "/update"
 	}
 	latestVersion, err := GetLatestVersionFromHangar(projectName)
 	if err != nil {
-		return err
+		return VersionInfo{}, err
 	}
-	if latestVersion == ver.Version {
+	if latestVersion == oldMeta.Version {
 		fmt.Printf("Already newest version of %v\n", projectName)
-		return nil
+		return *oldMeta, nil
 	}
 	versionMeta, err := GetVersionInfoHangar(projectName, latestVersion)
 	if err != nil {
-		return err
+		return VersionInfo{}, err
 	}
 	downloadMeta, ok := versionMeta.Downloads["PAPER"]
 	if !ok {
-		return fmt.Errorf("Failed to find download for version %v", latestVersion)
+		return VersionInfo{}, fmt.Errorf("Failed to find download for version %v", latestVersion)
 	}
 	if downloadMeta.ExternalUrl != "" || downloadMeta.DownloadUrl == "" {
-		return fmt.Errorf("Detected hangar external download!")
+		return VersionInfo{}, fmt.Errorf("Detected hangar external download!")
 	}
 	fmt.Printf("Downloading %v version %v", projectName, latestVersion)
 	checksum := Checksum{
@@ -139,14 +134,9 @@ func LoadHangarPlugin(dir, projectName, versionsFile string) error {
 	filename := downloadMeta.FileInfo.Name
 	err = LoadFileIfDoesNotExist(url, loadDir, filename, checksum)
 	if err != nil && !os.IsExist(err) {
-		return err
+		return VersionInfo{}, err
 	}
-	if info.Plugins == nil {
-		info.Plugins = make(map[string]VersionInfo)
-	}
-	info.Plugins[projectName] = VersionInfo{
+	return VersionInfo{
 		Version: latestVersion,
-	}
-	err = DumpVersionsInfo(info, versionsFile)
-	return err
+	}, err
 }

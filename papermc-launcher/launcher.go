@@ -362,22 +362,11 @@ outer:
 							panic(err)
 						}
 
-						info, err := LoadVersionsInfo(VERSIONS_FILE)
-						LoadPaper(s.Config.WorkDir)
-						for plugin, _ := range info.Plugins {
-							var err error
-							switch plugin {
-							case "geyser":
-								err = LoadGeyser(s.Config.WorkDir)
-							case "floodgate":
-								err = LoadFloodgate(s.Config.WorkDir)
-							default:
-								err = LoadModrinthPlugin(s.Config.WorkDir, plugin, VERSIONS_FILE)
-							}
-							if err != nil {
-								fmt.Printf("[WARN] Failed to load %v plugin: %v", plugin, err)
-							}
+						err = UpdateServer(s.Config.WorkDir)
+						if err != nil {
+							panic(err)
 						}
+
 						err = s.Start(runCtx)
 						if err != nil {
 							panic(err)
@@ -475,7 +464,7 @@ func main() {
 	}
 	os.MkdirAll(config.WorkDir, os.ModePerm)
 	if _, err := os.Stat(config.WorkDir + "/paper.jar"); errors.Is(err, os.ErrNotExist) {
-		LoadPaper(config.WorkDir)
+		LoadPaper(config.WorkDir, VersionInfo{})
 	}
 	server := Server{Config: &config, requestsPipe: make(chan ListenRequest)}
 	err = server.Run()
