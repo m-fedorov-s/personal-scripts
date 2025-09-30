@@ -1,0 +1,3374 @@
+[
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "EwxxIKGp",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b936",
+    "version_number": "2.8.3-b936",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5abc036^...5abc036):\n- [`5abc036`](https://github.com/GeyserMC/Geyser/commit/5abc036) Fix: Properly close inventory when opening forms by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-20T14:36:23.464888Z",
+    "downloads": 1421,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "6815f655f4003a9d0ca61e6e7bc50e7314fad624",
+          "sha512": "80b17a899bdb0a6fda7413ebd02889a1480f419c17fc9d295b8011b06d41dc8b5320b1b903629987440d21fbf1037065dbc47400ec5050ecec18012d934b6379"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/EwxxIKGp/geyser-fabric-Geyser-Fabric-2.8.3-b936.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b936.jar",
+        "primary": true,
+        "size": 14047618,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "SsXOiuUE",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b936",
+    "version_number": "2.8.3-b936",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5abc036^...5abc036):\n- [`5abc036`](https://github.com/GeyserMC/Geyser/commit/5abc036) Fix: Properly close inventory when opening forms by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-20T14:36:22.878428Z",
+    "downloads": 47,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "c3a076379a1a72336a42282e59909f9f970d146cf5f359a0250662727daf4e5640fb46d4c9bb5292f3c82e4ce3eb32b2a611f0b5cbf5f4dd613e51475d76d747",
+          "sha1": "bc5b64021fb24422e5bb5b5bdfac4da7b90a8278"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/SsXOiuUE/geyser-neoforge-Geyser-Neoforge-2.8.3-b936.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b936.jar",
+        "primary": true,
+        "size": 13606088,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "36R5XWar",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b936",
+    "version_number": "2.8.3-b936",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5abc036^...5abc036):\n- [`5abc036`](https://github.com/GeyserMC/Geyser/commit/5abc036) Fix: Properly close inventory when opening forms by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-20T14:36:05.964675Z",
+    "downloads": 435,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "bebe8f103cc175af93fa48d228adc287c3206e06",
+          "sha512": "963f84481679e939bba8c004ce936aeecae5a499c0f6061b45e9dafb891e4fd261b4aceb57569fae218cc4378390125694934a9861b09ef465a9263d67810917"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/36R5XWar/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18140179,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "29cMfxqV",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b936",
+    "version_number": "2.8.3-b936",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5abc036^...5abc036):\n- [`5abc036`](https://github.com/GeyserMC/Geyser/commit/5abc036) Fix: Properly close inventory when opening forms by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-20T14:35:57.905250Z",
+    "downloads": 2321,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "481faf9781e1384db0a4a949f87372c6b2c7e80a",
+          "sha512": "e2b7d92bda3c4ef0f61027ed321816b9d8a88d4c60ab38279caa36c776f767588260fed4f3de183ec518a764695552e2cb7d6165c55f7c2c8a655f97a3109c4c"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/29cMfxqV/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19517364,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "ASjeXC1s",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b936",
+    "version_number": "2.8.3-b936",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5abc036^...5abc036):\n- [`5abc036`](https://github.com/GeyserMC/Geyser/commit/5abc036) Fix: Properly close inventory when opening forms by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-20T14:35:55.789213Z",
+    "downloads": 15,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "422f0ea7f50effe2a89b8cf64ccf041c79788d9e762b184b05a6dd4bba9e404f615f12775ebc6d6342e3ea9ea96024a50701f2b56840148f4f729d9a4ab5550b",
+          "sha1": "9edce0474bbb222e09d99020ce55a5eddd58370a"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/ASjeXC1s/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18777083,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "U8KCTl0c",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b935",
+    "version_number": "2.8.3-b935",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7b0913c^...7b0913c):\n- [`7b0913c`](https://github.com/GeyserMC/Geyser/commit/7b0913c) Close the current inventory before sending form, kick players sending invalid block break actions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-19T01:43:21.000805Z",
+    "downloads": 167,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "aa59b602c09edef0cd24693e10acd2ee73a7bb9f1c3b4e1b80b85be0e27a5abcc9e84642e1b21da1aae1f8570f42fea017e63023cf1e79d9a3b2dca7d855f2c7",
+          "sha1": "aafb07a85334cd4f752e9a763edc54dd98da2ea3"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/U8KCTl0c/geyser-neoforge-Geyser-Neoforge-2.8.3-b935.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b935.jar",
+        "primary": true,
+        "size": 13606088,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "lZxJ5WPi",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b935",
+    "version_number": "2.8.3-b935",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7b0913c^...7b0913c):\n- [`7b0913c`](https://github.com/GeyserMC/Geyser/commit/7b0913c) Close the current inventory before sending form, kick players sending invalid block break actions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-19T01:43:20.598333Z",
+    "downloads": 362,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "19141da57fa133850cf3c377b932617c5f33a968",
+          "sha512": "3e1f3287e11ca6e2953924c6cbd995fb6d2ca6a091685afc25de885489f2523fc9cf0f3e9f620ac60bc756259fccfde860a414e19a404f87b4b3f69ce1c9b884"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/lZxJ5WPi/geyser-fabric-Geyser-Fabric-2.8.3-b935.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b935.jar",
+        "primary": true,
+        "size": 14047617,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "fv3Mod4T",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b935",
+    "version_number": "2.8.3-b935",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7b0913c^...7b0913c):\n- [`7b0913c`](https://github.com/GeyserMC/Geyser/commit/7b0913c) Close the current inventory before sending form, kick players sending invalid block break actions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-19T01:43:02.248564Z",
+    "downloads": 158,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "8cada19fc5ae2f6a27003e625b3ef781241370cb04e7d03d536b03116ea5003b5e7d3b0030dd5f8c3087d74f97d0c5aaa6acc20773b52dd2469ae48b589b5981",
+          "sha1": "36689de4c17a15b1f9c38c9840e192a99627aaf3"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/fv3Mod4T/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18140180,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "1iWpS0RA",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b935",
+    "version_number": "2.8.3-b935",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7b0913c^...7b0913c):\n- [`7b0913c`](https://github.com/GeyserMC/Geyser/commit/7b0913c) Close the current inventory before sending form, kick players sending invalid block break actions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-19T01:43:02.246948Z",
+    "downloads": 897,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "b7c55b6ca55bd18201a0313c2206b59531f3278d",
+          "sha512": "413d46bdfe387a441b8b22ec0af392f0cefee28dd051e9742d966df326d28dbb0cd14c951980a00c2ddca76939c77430594af3f9bea291ebb77aa737d453ee3b"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/1iWpS0RA/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19517368,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "U5iPi9QC",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b935",
+    "version_number": "2.8.3-b935",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7b0913c^...7b0913c):\n- [`7b0913c`](https://github.com/GeyserMC/Geyser/commit/7b0913c) Close the current inventory before sending form, kick players sending invalid block break actions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-19T01:42:58.158458Z",
+    "downloads": 8,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "bbff350336ed15cb9bac4b11750af81d45a11525",
+          "sha512": "574fd2b99191eb63e15b9743561d7334bf9a5587c75197f1f5f59866203e74541f003390c700f181dd31365aa4ccf79686cad0a81dc0eb8ded0f79f19ce94a07"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/U5iPi9QC/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18777082,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "3owP4hGQ",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/e8e4e80^...e8e4e80):\n- [`e8e4e80`](https://github.com/GeyserMC/Geyser/commit/e8e4e80) Add loading of new util.json mappings \\(\\#5823\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:33:36.998618Z",
+    "downloads": 117,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "a1eb6e2f27abd5bcbc2dbc26e0e6428fdbf0cc5a31b1f2b66674ddc62c1c2740ab85e943bc0fe33af79e9286e49cc9c0360da66259d248d77c2ed2ddcba37423",
+          "sha1": "367ff6f66f197c87968f6cbf8cb94ccd4222639d"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/3owP4hGQ/geyser-neoforge-Geyser-Neoforge-2.8.3-b933.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b933.jar",
+        "primary": true,
+        "size": 13605712,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "Xhkkeu7k",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/e8e4e80^...e8e4e80):\n- [`e8e4e80`](https://github.com/GeyserMC/Geyser/commit/e8e4e80) Add loading of new util.json mappings \\(\\#5823\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:33:36.957377Z",
+    "downloads": 263,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "909a1f5492f5e2ee4cddf58e685d55e0562e0ffb",
+          "sha512": "57b2131c5b4ce6688d7cac0740ff619adef74bfe17fdcfd9e3e72c05d7566c12148794d13353de4f091c96085bdbe6dcfda9c5076f0e88263232ccd8fa4d57a2"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/Xhkkeu7k/geyser-fabric-Geyser-Fabric-2.8.3-b933.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b933.jar",
+        "primary": true,
+        "size": 14047237,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "AMMOi6Mw",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/e8e4e80^...e8e4e80):\n- [`e8e4e80`](https://github.com/GeyserMC/Geyser/commit/e8e4e80) Add loading of new util.json mappings \\(\\#5823\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:33:17.868680Z",
+    "downloads": 134,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "5bac6637c8f10aaa8ae1ba6c17fe2cb7f9889348",
+          "sha512": "6a63644075f27170bc349c5f50746d54ee4e8264e3aa7a5f09a7f5101a636d9ec6184a3b7008231325177f77db84929bf60494542ea6c7fc7bff9779cc5a8093"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/AMMOi6Mw/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18139800,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "zVeReBHc",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/e8e4e80^...e8e4e80):\n- [`e8e4e80`](https://github.com/GeyserMC/Geyser/commit/e8e4e80) Add loading of new util.json mappings \\(\\#5823\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:33:09.714006Z",
+    "downloads": 701,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "58622ccbab2e378d3efa750399c475bc326454c8eeed0039b49a344dc7cb51cadcbef64f9ed3e46e568dbc88b151ace573405438eb5eac713280ee5c981974a9",
+          "sha1": "d64ca1c9e2e8c7bca14f3a5c0d05c06e63310aa3"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/zVeReBHc/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19516986,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "zUFzyPbR",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/e8e4e80^...e8e4e80):\n- [`e8e4e80`](https://github.com/GeyserMC/Geyser/commit/e8e4e80) Add loading of new util.json mappings \\(\\#5823\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:33:06.324759Z",
+    "downloads": 7,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "354bdcdc4926c3f251721e951987ceeafed00bc0",
+          "sha512": "233bad8f64d8303e8923bfe0a157c0218ea66967e4c1f01c16af7cabf69db80c48171d4eb6ab2c4dcb0ce514a7d95593551189409b22ef81c8315328353771e1"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/zUFzyPbR/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18776704,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "x7H8O2K2",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/4236036^...4236036):\n- [`4236036`](https://github.com/GeyserMC/Geyser/commit/4236036) Fix: pitch and yaw order inside PlayerLookAt packet translator. \\(\\#5826\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:29:12.394957Z",
+    "downloads": 7,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "11ecaec9938549e7968333c14e5041b44ab654334c1f4fa89048d2e31d08caa942ebd64c2fb20916fa66ccc1c8f21086d653ed825e8af014b2de41c087ae31b0",
+          "sha1": "8e9e5ead16c7b62a9c0e809261ebc184ef1ec7ba"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/x7H8O2K2/geyser-fabric-Geyser-Fabric-2.8.3-b933.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b933.jar",
+        "primary": true,
+        "size": 14043349,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "gkToNEtb",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/4236036^...4236036):\n- [`4236036`](https://github.com/GeyserMC/Geyser/commit/4236036) Fix: pitch and yaw order inside PlayerLookAt packet translator. \\(\\#5826\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:29:11.454385Z",
+    "downloads": 6,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "b0ddd7cc44e64b954353c8261bd925b46db9964b59a53efd9321a00f3f804750efa2fd8eda7777fa0b489bdd80f43fccf0eb7ac260cbb8e175d5801fec6fe3dc",
+          "sha1": "07f61b39cd5c6ef5f7e4b7e61939cb7f2567a636"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/gkToNEtb/geyser-neoforge-Geyser-Neoforge-2.8.3-b933.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b933.jar",
+        "primary": true,
+        "size": 13601816,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "M0jXBpMl",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/4236036^...4236036):\n- [`4236036`](https://github.com/GeyserMC/Geyser/commit/4236036) Fix: pitch and yaw order inside PlayerLookAt packet translator. \\(\\#5826\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:28:53.992515Z",
+    "downloads": 10,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "1e30168588654aac5b8f35d1275d2e29f9bbb2e02a634126cd6b4998ec61465535f074fda2cc3b2118a9ffad5bd2e466ba3bc8aab47a34d2422aa7cc370737f8",
+          "sha1": "a074c22cf407755665360706be0d787b4d37cdbb"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/M0jXBpMl/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18135997,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "T9fXWenC",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/4236036^...4236036):\n- [`4236036`](https://github.com/GeyserMC/Geyser/commit/4236036) Fix: pitch and yaw order inside PlayerLookAt packet translator. \\(\\#5826\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:28:47.084874Z",
+    "downloads": 15,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "b6abc2b7aea9bda3f0d410172db042950d1b671bec59858dd19964346a3e3a0a0d7766523bd414cd94eff0cb9c72632aa61280924320daa597e6a9931452ca7f",
+          "sha1": "3bc7cb6641530300d996037a01973fe955ede5e3"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/T9fXWenC/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19513133,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "8y16ovfF",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b933",
+    "version_number": "2.8.3-b933",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/4236036^...4236036):\n- [`4236036`](https://github.com/GeyserMC/Geyser/commit/4236036) Fix: pitch and yaw order inside PlayerLookAt packet translator. \\(\\#5826\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T12:28:46.023603Z",
+    "downloads": 5,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "d5e0db30ac7f2a830d9c60dee07a16dca9c5a80d",
+          "sha512": "3ae02148273a8b58620f7fcf45c12ed9bb99ecdf792924d36e4790486a26c2a804fa39fd07a408f5dedcc0f3329bf8d5710cf902169cc27698d672c7c337b261"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/8y16ovfF/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18772788,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "dAzlhotk",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b932",
+    "version_number": "2.8.3-b932",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f42783^...9f42783):\n- [`9f42783`](https://github.com/GeyserMC/Geyser/commit/9f42783) Check for blank instead of empty legacy color by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T11:38:49.403652Z",
+    "downloads": 17,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "6ead45adfd389ceacccf2b0b514fba449470309e",
+          "sha512": "2992a0ba4d01a6b2b28b854206924ed5b95cb70f3055f31e66034225893b15725da5f3c3d5c14a522c00ac69652db2e03732281f1728bce42dd5937cf77c5985"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/dAzlhotk/geyser-fabric-Geyser-Fabric-2.8.3-b932.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b932.jar",
+        "primary": true,
+        "size": 14043347,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "ciddASTS",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b932",
+    "version_number": "2.8.3-b932",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f42783^...9f42783):\n- [`9f42783`](https://github.com/GeyserMC/Geyser/commit/9f42783) Check for blank instead of empty legacy color by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T11:38:47.200728Z",
+    "downloads": 3,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "bb882fad9ad6ce6c24ed42b4e7afd01f20391617",
+          "sha512": "43a946a9c6880e36fbaa13f684cfffddc23a3173c42ddff97584ef135d589a2f39d52e16ab8a81f03992d55f1777b0c29e8af7d3a4bfb139db9a1e17ffec67b1"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/ciddASTS/geyser-neoforge-Geyser-Neoforge-2.8.3-b932.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b932.jar",
+        "primary": true,
+        "size": 13601812,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "iJOrYw3F",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b932",
+    "version_number": "2.8.3-b932",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f42783^...9f42783):\n- [`9f42783`](https://github.com/GeyserMC/Geyser/commit/9f42783) Check for blank instead of empty legacy color by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T11:38:30.038236Z",
+    "downloads": 6,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "6666f12098a97500a78d86ecfda12c5e4a4b1742",
+          "sha512": "b0d2bc490a959a7398e2eade5097447f7bedf4ac8c03293cd3a961355476a1417e1ac590741995ab8c3a24ed114acda11a979eed2d51833eb404b1326b39a532"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/iJOrYw3F/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18135989,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "uj8TqYSs",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b932",
+    "version_number": "2.8.3-b932",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f42783^...9f42783):\n- [`9f42783`](https://github.com/GeyserMC/Geyser/commit/9f42783) Check for blank instead of empty legacy color by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T11:38:19.688813Z",
+    "downloads": 27,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "7620137dd52968f196f70e7c3371a3d7fe58fcdfd8cb3654ac7785c97dabba9bbe502822e6ee7fc195bd63564dadcc4d3e2d9767e360503687e330e5792c0ebf",
+          "sha1": "e6ceb26e9c0534b95e3c1c76a375ecb85aaf4fb9"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/uj8TqYSs/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19513124,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "R3wRlqdh",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b932",
+    "version_number": "2.8.3-b932",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f42783^...9f42783):\n- [`9f42783`](https://github.com/GeyserMC/Geyser/commit/9f42783) Check for blank instead of empty legacy color by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-17T11:38:18.563128Z",
+    "downloads": 2,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "399732decf29d8a01d47a0c58441cf4d4da8802f",
+          "sha512": "ad050b65591cab0bd508db363b7e3317c9af8faa21189c864f271394986be077f08ab00dffc29c876061e838ca439e6d9a4db2d8c008771618bef65778914277"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/R3wRlqdh/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18772782,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "zgQJSJp3",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b931",
+    "version_number": "2.8.3-b931",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f8bc9d^...9f8bc9d):\n- [`9f8bc9d`](https://github.com/GeyserMC/Geyser/commit/9f8bc9d) Bump MCPL for data palette fixes \\(\\#5818\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-15T21:17:46.697582Z",
+    "downloads": 431,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "030a01e89335933e2ee3fc38acee93b8910c0a329c61942cbdd655d81c8a7190b957e08d4c685135b5cf479ffaad8a6e1d2c83c3dc0993bbbc27c6fe974e456c",
+          "sha1": "3479e44a927e2a3f349609389c7dcd3edd604d76"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/zgQJSJp3/geyser-fabric-Geyser-Fabric-2.8.3-b931.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b931.jar",
+        "primary": true,
+        "size": 14043321,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "peTzkO67",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b931",
+    "version_number": "2.8.3-b931",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f8bc9d^...9f8bc9d):\n- [`9f8bc9d`](https://github.com/GeyserMC/Geyser/commit/9f8bc9d) Bump MCPL for data palette fixes \\(\\#5818\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-15T21:17:45.719412Z",
+    "downloads": 16,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "4345582f3b603bc6a9fcbc55ada64db3b4bf7858",
+          "sha512": "f7d8a99cb1b11f095f413fb6838e3ab1bf3f17c9c3c3cfde721b8ed2a681b96e2907d11627727510ef830b7a592f35b80f2fd69a1a848078da767936f07a55c7"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/peTzkO67/geyser-neoforge-Geyser-Neoforge-2.8.3-b931.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b931.jar",
+        "primary": true,
+        "size": 13601794,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "2ZVBhO7G",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b931",
+    "version_number": "2.8.3-b931",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f8bc9d^...9f8bc9d):\n- [`9f8bc9d`](https://github.com/GeyserMC/Geyser/commit/9f8bc9d) Bump MCPL for data palette fixes \\(\\#5818\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-15T21:17:28.201196Z",
+    "downloads": 122,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "a9d3fe92d381c90ffb4625816eba8a265b97ce2c",
+          "sha512": "c15240ad7e344b33c1e23e8c777a4463b851fc8aa8b07ab2db95710ea84059860ecc1c1557023933ed17d3a7c5200f1c693ec95b7073f830a90b2254eae9ded4"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/2ZVBhO7G/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18135969,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "Faac8bqc",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b931",
+    "version_number": "2.8.3-b931",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f8bc9d^...9f8bc9d):\n- [`9f8bc9d`](https://github.com/GeyserMC/Geyser/commit/9f8bc9d) Bump MCPL for data palette fixes \\(\\#5818\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-15T21:17:17.104981Z",
+    "downloads": 686,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "9d31933a083d628d04d0b3ad1e6011d3e5f4c7c1",
+          "sha512": "abd2a6675c3d1c17fdb61c0a7f77503d4cf1381d6f0860e2c3bc76ef4af548ec16620c5ba3f133b4596d8942f8168f8489e3659f2d8befe5565483bf5c2214d3"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/Faac8bqc/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19513109,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "lpqXwjPN",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b931",
+    "version_number": "2.8.3-b931",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/9f8bc9d^...9f8bc9d):\n- [`9f8bc9d`](https://github.com/GeyserMC/Geyser/commit/9f8bc9d) Bump MCPL for data palette fixes \\(\\#5818\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-15T21:17:15.248866Z",
+    "downloads": 12,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "f8a3248783cb2eff62d76684ba9b35d73e59ff6b56b248f3f5e4c71a70c4e9eb9e51a5e9e8846c88c0173781727dd6e7be479ba94ef7f62ad6ac8c81c7b4cab5",
+          "sha1": "bc68f742400d5f4b00db391f1f44c3aa62cc3c1e"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/lpqXwjPN/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18772768,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "EBcj7CeC",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b930",
+    "version_number": "2.8.3-b930",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/6690e75^...6690e75):\n- [`6690e75`](https://github.com/GeyserMC/Geyser/commit/6690e75) Fix index out of bounds exception in BlockBreakHandler \\(\\#5820\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T19:08:09.891802Z",
+    "downloads": 582,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "d6638172f77da773125da06e446f089c40b7be3e",
+          "sha512": "6e0933918b0bd6263eacb478eeecad3d5256f2aa3b7b9211482e8bac7fb9d4333143f4cc48b516909b80f1023532d2eaa59e523959d1ea1a813f7eeacae9cef6"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/EBcj7CeC/geyser-fabric-Geyser-Fabric-2.8.3-b930.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b930.jar",
+        "primary": true,
+        "size": 14043097,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "JPJWUYgm",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b930",
+    "version_number": "2.8.3-b930",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/6690e75^...6690e75):\n- [`6690e75`](https://github.com/GeyserMC/Geyser/commit/6690e75) Fix index out of bounds exception in BlockBreakHandler \\(\\#5820\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T19:08:07.291094Z",
+    "downloads": 29,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "13c263b9fd9af2eed62120bc6e534f423510d6a1",
+          "sha512": "370514b4b59c59068102c4e0c7a14c49ba6337b28b524e1b83e9e5ebe191a627c7ade3ad820d698bc61b0eb90f104bcbeb779c9baa3a3eb95acd2e6c07985ab7"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/JPJWUYgm/geyser-neoforge-Geyser-Neoforge-2.8.3-b930.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b930.jar",
+        "primary": true,
+        "size": 13601550,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "HPlW7BxK",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b930",
+    "version_number": "2.8.3-b930",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/6690e75^...6690e75):\n- [`6690e75`](https://github.com/GeyserMC/Geyser/commit/6690e75) Fix index out of bounds exception in BlockBreakHandler \\(\\#5820\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T19:07:49.687641Z",
+    "downloads": 1117,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "e08d122b398873995d968be1df0fd446608325c456a60875c4dd20c03a4db93565d768b21b65bcfe4d81084a44c3bfc54b7ef976e9032a749d1e1e38bbb72a23",
+          "sha1": "9bd4f20c4322da40029f9c3318b28f0acf2d4ed6"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/HPlW7BxK/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19512891,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "sxxH2WTc",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b930",
+    "version_number": "2.8.3-b930",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/6690e75^...6690e75):\n- [`6690e75`](https://github.com/GeyserMC/Geyser/commit/6690e75) Fix index out of bounds exception in BlockBreakHandler \\(\\#5820\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T19:07:48.372441Z",
+    "downloads": 37,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "a8f65315fd143569b67e5834d6ee5cabe4b7f249",
+          "sha512": "957fa55d9451743c049a5cf376284f86291fe14c128cb05e05ee7fa83fd6c374d7f8c7c4ee99b107d6cd208c5641d82db0e0c62d2accce9f5d5295f84b9eb347"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/sxxH2WTc/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18135742,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "izJCXyPH",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b930",
+    "version_number": "2.8.3-b930",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/6690e75^...6690e75):\n- [`6690e75`](https://github.com/GeyserMC/Geyser/commit/6690e75) Fix index out of bounds exception in BlockBreakHandler \\(\\#5820\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T19:07:46.782855Z",
+    "downloads": 13,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "5d4066a402001bb9840b67ec7588afc6f6d3205ec2487ea805fefd822f0b257665b9450ef909fb661c838bfbaaa2c2eaa578235db478d89859cb8ba5ba79d440",
+          "sha1": "afdc2342618849c82b933f68ae7a84099347097a"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/izJCXyPH/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18772546,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "TjltHfSb",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b929",
+    "version_number": "2.8.3-b929",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/d56cc11^...d56cc11):\n- [`d56cc11`](https://github.com/GeyserMC/Geyser/commit/d56cc11) Fix breaking of custom blocks or blocks with custom items \\(\\#5817\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T09:41:49.810979Z",
+    "downloads": 136,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "d67b23f1b747d869f8c0d04ab3c2afb296919f21",
+          "sha512": "5595d01fcfecdd1ee0f81b2fd88a99b4fdb39a5d42dc9eb531a56da805f408e6ccc91371fd31554aa7f3e339f53b3836fa35b4582ebb31375f5fbe402dcb423a"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/TjltHfSb/geyser-fabric-Geyser-Fabric-2.8.3-b929.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b929.jar",
+        "primary": true,
+        "size": 14042158,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "dJ295u9N",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b929",
+    "version_number": "2.8.3-b929",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/d56cc11^...d56cc11):\n- [`d56cc11`](https://github.com/GeyserMC/Geyser/commit/d56cc11) Fix breaking of custom blocks or blocks with custom items \\(\\#5817\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T09:41:48.859039Z",
+    "downloads": 11,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "fda7bc1dd740a509862ca149b6ead56d1690465f",
+          "sha512": "b6d8bed21c62341c0dafe3dafae8493c6692f9e117be02b6c85cd7945f678a8f82b7651ace91a935e558907007f346f73027cf69a0540e55f6e7456e07452883"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/dJ295u9N/geyser-neoforge-Geyser-Neoforge-2.8.3-b929.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b929.jar",
+        "primary": true,
+        "size": 13600627,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "NJ5XvnCh",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b929",
+    "version_number": "2.8.3-b929",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/d56cc11^...d56cc11):\n- [`d56cc11`](https://github.com/GeyserMC/Geyser/commit/d56cc11) Fix breaking of custom blocks or blocks with custom items \\(\\#5817\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T09:41:31.269673Z",
+    "downloads": 57,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "c93789323e33b99da286e68bd77b6c91be6c505c",
+          "sha512": "f7fc41b094cdc3d215fefb7c08bffd9c46a7a9bd970636c2c5ff44ab6c3a255f24ce2b2dd973b3b73a22e8a9fc7112dbe423f21d081da50a326bbb6cc1a5e4d4"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/NJ5XvnCh/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18134809,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "VdYv7PIg",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b929",
+    "version_number": "2.8.3-b929",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/d56cc11^...d56cc11):\n- [`d56cc11`](https://github.com/GeyserMC/Geyser/commit/d56cc11) Fix breaking of custom blocks or blocks with custom items \\(\\#5817\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T09:41:30.679332Z",
+    "downloads": 284,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "aa3eb4b4df1d93f6edd01c6f0ac4eb1a7046a87b",
+          "sha512": "cc4425570ba77cf3101960f3cf146db4de3294e34edb0f34fd525fabe41704ca8d9f165a89cdc3a15eff5b9db9090442300ee27737a9aa8c8e51c3ec045ccb05"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/VdYv7PIg/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19511951,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "j1XCS2sn",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b929",
+    "version_number": "2.8.3-b929",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/d56cc11^...d56cc11):\n- [`d56cc11`](https://github.com/GeyserMC/Geyser/commit/d56cc11) Fix breaking of custom blocks or blocks with custom items \\(\\#5817\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-13T09:41:28.672700Z",
+    "downloads": 6,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "eb6ac7fb7b3e34db43ef7ead04bb89170d4c270f",
+          "sha512": "b32a6d810988257337632a421dc5fcd61a7df56a5136d0e3f61e2a8d461229ec87afc7649e363fd5de5e5b6115311f49e23151daa72d6c014b3913b18c588171"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/j1XCS2sn/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18771616,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "AULpQVgf",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b928",
+    "version_number": "2.8.3-b928",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/18c7105^...18c7105):\n- [`18c7105`](https://github.com/GeyserMC/Geyser/commit/18c7105) Fix: force flag update for session players entity flags \\(\\#5810\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-12T00:24:10.505800Z",
+    "downloads": 402,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "56c3cced6e9854502321e548a4f5465da1b76aed",
+          "sha512": "0fa67654adbbef01396ea414aff527fd8d5b85f084f0b1b9179cff1182eea86d1c71d6088134c6977582697527b00c4d09443db992fcb939ea136119aa109d32"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/AULpQVgf/geyser-fabric-Geyser-Fabric-2.8.3-b928.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b928.jar",
+        "primary": true,
+        "size": 14042026,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "vXd2Dnm9",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b928",
+    "version_number": "2.8.3-b928",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/18c7105^...18c7105):\n- [`18c7105`](https://github.com/GeyserMC/Geyser/commit/18c7105) Fix: force flag update for session players entity flags \\(\\#5810\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-12T00:24:09.289395Z",
+    "downloads": 9,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "d34ed3ccbd60c04907c444b98f7e2b0fbfd7fa3442fd8184014e075511d367a96c5da72dcabc87600b3b51e54d7466b16e57f07cd5bb1401eb936518c30e3110",
+          "sha1": "16490bce079d8f3b8c9ad8dd64b5d6c04f3be5eb"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/vXd2Dnm9/geyser-neoforge-Geyser-Neoforge-2.8.3-b928.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b928.jar",
+        "primary": true,
+        "size": 13600492,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "pt2NJyAl",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b928",
+    "version_number": "2.8.3-b928",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/18c7105^...18c7105):\n- [`18c7105`](https://github.com/GeyserMC/Geyser/commit/18c7105) Fix: force flag update for session players entity flags \\(\\#5810\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-12T00:23:52.377075Z",
+    "downloads": 126,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "a3fda4aa5f8859a00a21c76a18ef4300c41705af369409868831a00fd007b51aec9e3b7c2d596c014a04f610b630d3f50b5dc32cc74c35ed55a9c57dec89d803",
+          "sha1": "e9aec6d9bcd7d2d1ba46af7385cded48faf17113"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/pt2NJyAl/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18134678,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "rXfZDNgn",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b928",
+    "version_number": "2.8.3-b928",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/18c7105^...18c7105):\n- [`18c7105`](https://github.com/GeyserMC/Geyser/commit/18c7105) Fix: force flag update for session players entity flags \\(\\#5810\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-12T00:23:48.719836Z",
+    "downloads": 685,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "14476f4ccad69c1367cda4eb10c6e86b9c4aa631",
+          "sha512": "86929f9ecf83b9808aac283dba51507bd9d9b07815eee941ae623ec5a7b2f580e6f28b7ee1eaef478aaea05cacb710c53507fa91e7b2876b436072d73998ed07"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/rXfZDNgn/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19511823,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "2lLyRCKi",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b928",
+    "version_number": "2.8.3-b928",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/18c7105^...18c7105):\n- [`18c7105`](https://github.com/GeyserMC/Geyser/commit/18c7105) Fix: force flag update for session players entity flags \\(\\#5810\\) by @oryxel1\n",
+    "changelog_url": null,
+    "date_published": "2025-09-12T00:23:46.564885Z",
+    "downloads": 7,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "384d4df8de09659764bdb583f2a465ebfba73cdf930c0a0a4c6b3cea99d41ef8c3b532d67693f926145745d79d801c6036064e9161c2abdbbb68ebbe3cc9deb0",
+          "sha1": "795cffd8fdebb4ccf999227860a65b0062d739ad"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/2lLyRCKi/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18771489,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "XjCDr27a",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b927",
+    "version_number": "2.8.3-b927",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5b16c9c^...5b16c9c):\n- [`5b16c9c`](https://github.com/GeyserMC/Geyser/commit/5b16c9c) Update MCPL - resolves Geyser not starting on older Spigot \\/ Paper versions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T17:48:16.701367Z",
+    "downloads": 87,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "274a5848e9a561a616c15750ada4c218e1add630fc530bc2e0a14ab8565fbe05f9fdeddca04714b967800684c32a322046228c522762bd25d0944a9b3be116de",
+          "sha1": "583d803e2a9559735111363e1e8acd5583a1529f"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/XjCDr27a/geyser-fabric-Geyser-Fabric-2.8.3-b927.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b927.jar",
+        "primary": true,
+        "size": 14041955,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "UwDg0n8P",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b927",
+    "version_number": "2.8.3-b927",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5b16c9c^...5b16c9c):\n- [`5b16c9c`](https://github.com/GeyserMC/Geyser/commit/5b16c9c) Update MCPL - resolves Geyser not starting on older Spigot \\/ Paper versions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T17:48:15.991020Z",
+    "downloads": 5,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "729de39316bd1da1e9a72db2a75b724eab6cb12736c2965edeadfc1005cbb383a9d9a1229401ea040cad9ba69cbd25330843093fc97c011f8c93bd1ef9e15866",
+          "sha1": "d0091672c46b2e731ce2dc9ffdb4a05cd272e7f5"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/UwDg0n8P/geyser-neoforge-Geyser-Neoforge-2.8.3-b927.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b927.jar",
+        "primary": true,
+        "size": 13600433,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "Fy731NDs",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b927",
+    "version_number": "2.8.3-b927",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5b16c9c^...5b16c9c):\n- [`5b16c9c`](https://github.com/GeyserMC/Geyser/commit/5b16c9c) Update MCPL - resolves Geyser not starting on older Spigot \\/ Paper versions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T17:47:59.806830Z",
+    "downloads": 22,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "45e648c5adf991f50299fe6e6df05fd24e5d9770",
+          "sha512": "6bcb6cd65c853b52bb9536d229763ff7232d1340bef821f0edbb4734d1bbf867881a510e9e8759652ef5c8d5a0a2c2ff8311bfa5e809242bf1a354b96128b901"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/Fy731NDs/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18771421,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "HsvW82oH",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b927",
+    "version_number": "2.8.3-b927",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5b16c9c^...5b16c9c):\n- [`5b16c9c`](https://github.com/GeyserMC/Geyser/commit/5b16c9c) Update MCPL - resolves Geyser not starting on older Spigot \\/ Paper versions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T17:47:53.478377Z",
+    "downloads": 8,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "4b7febc17a3362614a646d65bad8148f50d035ad",
+          "sha512": "3d57052f161e33c0ea9bbe665e2558908744cd818cd761e90c3670f99fc7c78c8ed04f1380ef42bf1a6e1c94675e1ba6ce68b13c6ad62f9b74a4e1473cbb8d4f"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/HsvW82oH/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18134614,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "lF6fFvyU",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b927",
+    "version_number": "2.8.3-b927",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/5b16c9c^...5b16c9c):\n- [`5b16c9c`](https://github.com/GeyserMC/Geyser/commit/5b16c9c) Update MCPL - resolves Geyser not starting on older Spigot \\/ Paper versions by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T17:47:51.435255Z",
+    "downloads": 119,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "523c15f601af5c6b9e2933ac4ffe1427540be356",
+          "sha512": "c1604835e4db5faab1e883925e7c307fdf95aa8e57316ce4c36d77a8d5d68fd51557492b454bf1d37d37fcd3974ecd38091f4ecee4ee7a61e9e8a768537f2448"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/lF6fFvyU/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19511754,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "D8BqqMgC",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/cb65d1a^...cb65d1a):\n- [`cb65d1a`](https://github.com/GeyserMC/Geyser/commit/cb65d1a) Fix loading of trim materials with an empty description \\(\\#5814\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:40:40.651812Z",
+    "downloads": 13,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "b1cd4c370100fd309612ae1b5ebe6683743c737b",
+          "sha512": "43b2effe4f238e9f82970091109e559a09dfafa48f38acb2b0717ee6cce8964479d6e6e3764fd5eec327ddadb321a0b320cf25a65720292a8e3b390545029b23"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/D8BqqMgC/geyser-fabric-Geyser-Fabric-2.8.3-b924.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b924.jar",
+        "primary": true,
+        "size": 14041404,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "uVKFzj3y",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/cb65d1a^...cb65d1a):\n- [`cb65d1a`](https://github.com/GeyserMC/Geyser/commit/cb65d1a) Fix loading of trim materials with an empty description \\(\\#5814\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:40:38.127006Z",
+    "downloads": 2,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "4c0f597327efa5f69648a5ad1067243fd8dc827a",
+          "sha512": "438e65965d2c670fa22f24ce3ce7a23fad24e897102194644849f08b84e826703e5217ffbac22708cc4803975ebf9c7fc65f873e8bbfb026ba2cab33f719ae73"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/uVKFzj3y/geyser-neoforge-Geyser-Neoforge-2.8.3-b924.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b924.jar",
+        "primary": true,
+        "size": 13599840,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "ymeN5Us4",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/cb65d1a^...cb65d1a):\n- [`cb65d1a`](https://github.com/GeyserMC/Geyser/commit/cb65d1a) Fix loading of trim materials with an empty description \\(\\#5814\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:40:21.177557Z",
+    "downloads": 49,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "f8ec878bd5ac53e5eb0e664ce7d9a7e95bac050c",
+          "sha512": "9af0b809c83469d724fb88c197a826b03547d4411c59a57836ee2936bbb1a6b7fab51cade54921c830e1c7da8304a2339a4ca626a307584cb4f888ad5bb1acc9"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/ymeN5Us4/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19511208,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "ofp7ZdRt",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/cb65d1a^...cb65d1a):\n- [`cb65d1a`](https://github.com/GeyserMC/Geyser/commit/cb65d1a) Fix loading of trim materials with an empty description \\(\\#5814\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:40:20.485089Z",
+    "downloads": 5,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "fe310d435d6f384276a00c30ade2fca9501004bd",
+          "sha512": "f5dfd4b695529cafc0da8449cdef5d8491e5b6abd4b4ccb45481a8ff24dd499c41a023e244402d96cedae9d95d88d16dd453d89378f219389c0ea5373d6f49ff"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/ofp7ZdRt/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18134062,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "KKtmtyuo",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/cb65d1a^...cb65d1a):\n- [`cb65d1a`](https://github.com/GeyserMC/Geyser/commit/cb65d1a) Fix loading of trim materials with an empty description \\(\\#5814\\) by @eclipseisoffline\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:40:18.930478Z",
+    "downloads": 4,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "0a99a7e2cab738f2665eec1c5c986b6c1ea93734",
+          "sha512": "2465374ecbb495efcc4409f7e3ed75bd84599e4e504391ed9224b29deec8abd323f6598dd34fe06d104d874a111120fb7dcda855f6b2a6da7c79a4db39e443c4"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/KKtmtyuo/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18770872,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "fvUOw2v9",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/50855d0^...50855d0):\n- [`50855d0`](https://github.com/GeyserMC/Geyser/commit/50855d0) Fix: Don't flatten component before checking max nesting depth \\(\\#5815\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:38:35.107075Z",
+    "downloads": 3,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "291a14de7cf48a5c6e299fdaa8e93d7d114209ca",
+          "sha512": "ad38050e14734dd9fb1cb4213aa610600a9f5ec4170b13e54a25cf8214586597038898096138e09d791202106cfb00f8d2fe65f59e9414af5ad2f44b007fa015"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/fvUOw2v9/geyser-fabric-Geyser-Fabric-2.8.3-b924.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b924.jar",
+        "primary": true,
+        "size": 14041366,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "pUiRxhim",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/50855d0^...50855d0):\n- [`50855d0`](https://github.com/GeyserMC/Geyser/commit/50855d0) Fix: Don't flatten component before checking max nesting depth \\(\\#5815\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:38:34.281488Z",
+    "downloads": 3,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "8dfe510034df3f1ae1cb75bec509f07b7c4fdc0f2b17d0a50e18b453e47174b597680ca890d4d8e9392aa40b46759866c9ce9a6b8b2be957d191e7dcdd098980",
+          "sha1": "709fb63524e5d5cb14cfb82a99f182f85ec1e64f"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/pUiRxhim/geyser-neoforge-Geyser-Neoforge-2.8.3-b924.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b924.jar",
+        "primary": true,
+        "size": 13599801,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "EeFlWzJw",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/50855d0^...50855d0):\n- [`50855d0`](https://github.com/GeyserMC/Geyser/commit/50855d0) Fix: Don't flatten component before checking max nesting depth \\(\\#5815\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:38:17.190048Z",
+    "downloads": 1,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "4311ed50c041b86aa883a27800990a6a41100935",
+          "sha512": "87119b29b5471b55f51a5b20927de020d85562177bfa91e4b1d179b6782b721446199217c3de83f059062247989001a2f1f80b2d9057d8b04f5dc094d69c41d1"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/EeFlWzJw/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18134024,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "sVAGqJUz",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/50855d0^...50855d0):\n- [`50855d0`](https://github.com/GeyserMC/Geyser/commit/50855d0) Fix: Don't flatten component before checking max nesting depth \\(\\#5815\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:38:08.093668Z",
+    "downloads": 14,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "78b8000ae510e557f593b081d3c78d31897ec7ac",
+          "sha512": "87bc1e8f8b22593ccf176b0074bf3a569a537987276be1e7e2745eb9c43cae4bff632bb7ddc13f690793389330b97dcef3d2be7263641dd18eb2fe6bc6f7fc07"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/sVAGqJUz/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19511168,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "5YziU5j0",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/50855d0^...50855d0):\n- [`50855d0`](https://github.com/GeyserMC/Geyser/commit/50855d0) Fix: Don't flatten component before checking max nesting depth \\(\\#5815\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:38:04.509508Z",
+    "downloads": 2,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "4272237693dc02c065519f1a87d76d606147bde4",
+          "sha512": "fd725a0d6f20cbec5ab29849b70556f61c0654350a4748cd88388300e42baa9e58282824b33af5e0c4ca5372953abaa0b4b64e3ee4a8131d88d9d1f30255c428"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/5YziU5j0/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18770832,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "4ou2HnEv",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/c4d6947^...c4d6947):\n- [`c4d6947`](https://github.com/GeyserMC/Geyser/commit/c4d6947) Resolve client-side visual bug when removing flowers from flower pots by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:36:03.303358Z",
+    "downloads": 1,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "7819532a3007c5703c66235fa28431b6f1d86ec2",
+          "sha512": "5407b3a778db325c87d720b377a4bebc55d20e1c9bd1da5fc9651214b54f112d03395cb7ed2e2a4689e7f2dd4697fbf900c554e25eff20dc82cac6a758339133"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/4ou2HnEv/geyser-fabric-Geyser-Fabric-2.8.3-b924.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b924.jar",
+        "primary": true,
+        "size": 14040598,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "MUmnBfuK",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/c4d6947^...c4d6947):\n- [`c4d6947`](https://github.com/GeyserMC/Geyser/commit/c4d6947) Resolve client-side visual bug when removing flowers from flower pots by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:36:00.684595Z",
+    "downloads": 2,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "00e13062b957da376646067bf5188dade1636dc0cb208cf0cbc78e9e42b086dd6cfcf37dad6f08b870aea76996e7e408947b47359477493aa24cd0971739a8e9",
+          "sha1": "05c95a087e0980cb6cee35d62aa086fe237d0385"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/MUmnBfuK/geyser-neoforge-Geyser-Neoforge-2.8.3-b924.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b924.jar",
+        "primary": true,
+        "size": 13599038,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "LonKwPCk",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/c4d6947^...c4d6947):\n- [`c4d6947`](https://github.com/GeyserMC/Geyser/commit/c4d6947) Resolve client-side visual bug when removing flowers from flower pots by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:35:43.962827Z",
+    "downloads": 12,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "bdb5a844412b4e045b3e926d87966513cf188ca8",
+          "sha512": "18a09785fad724bb6ec71534df8b028afe7972139b49a1c2d902ad1c56caa6571359379875fdfcd580767ea719f0e388c8a83f08dd479d1c81dcd7de22955f5d"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/LonKwPCk/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19510391,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "NsxGQeS0",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/c4d6947^...c4d6947):\n- [`c4d6947`](https://github.com/GeyserMC/Geyser/commit/c4d6947) Resolve client-side visual bug when removing flowers from flower pots by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:35:43.736285Z",
+    "downloads": 3,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "2c23c053f0b67eb14c9c439cef68332596f680cd",
+          "sha512": "2934be1782660f9b907b677477f29df2241ad7c091927a9161b8a6dc6de6ebedc3f42187d8451106ddee73862f8486709b016a3bb3baaf775cdd22cf69b37f23"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/NsxGQeS0/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18133260,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "srhrWujX",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b924",
+    "version_number": "2.8.3-b924",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/c4d6947^...c4d6947):\n- [`c4d6947`](https://github.com/GeyserMC/Geyser/commit/c4d6947) Resolve client-side visual bug when removing flowers from flower pots by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T16:35:42.602962Z",
+    "downloads": 1,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "e8bae21301c3076690e5514cfbd2232bd92048ec454b671a57af8c75a5ac37c372fca5c5c236aef325a2680e2e318310110f12e37668d2b6afe7b6bc1bb38c34",
+          "sha1": "0cccc7047e438bd836ba3b18cce139e82cbd834b"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/srhrWujX/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18770059,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "Oq6oovxi",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b923",
+    "version_number": "2.8.3-b923",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/35be907^...35be907):\n- [`35be907`](https://github.com/GeyserMC/Geyser/commit/35be907) Improve block breaking code \\(\\#5809\\) by @onebeastchris & @Eclipse\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T13:01:34.827904Z",
+    "downloads": 45,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "30dbe89ec25745ba01fbabbeb3712cab4a478733938445afa728382953c5fbf797e3e32bdd6ad91d25407f31e7edbf10d71c6e1cf70985198788286756c7da47",
+          "sha1": "89b94c8f9ff1b3637d687841fce660ff45560cfd"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/Oq6oovxi/geyser-fabric-Geyser-Fabric-2.8.3-b923.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b923.jar",
+        "primary": true,
+        "size": 14040317,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "TBF723u9",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b923",
+    "version_number": "2.8.3-b923",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/35be907^...35be907):\n- [`35be907`](https://github.com/GeyserMC/Geyser/commit/35be907) Improve block breaking code \\(\\#5809\\) by @onebeastchris & @Eclipse\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T13:01:34.215443Z",
+    "downloads": 9,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "5c3677a37a29434674b9302db6c7d23916bf8d51dce33aa911f80dc6236c8a6e487ceeb8a0e608b66e555fdc65e2645ad96df4936c696e80779acf4f3f47f9d4",
+          "sha1": "275d36721cc3a57b52e56531d572a6dee071e31c"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/TBF723u9/geyser-neoforge-Geyser-Neoforge-2.8.3-b923.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b923.jar",
+        "primary": true,
+        "size": 13598760,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "9Ddftoxo",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b923",
+    "version_number": "2.8.3-b923",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/35be907^...35be907):\n- [`35be907`](https://github.com/GeyserMC/Geyser/commit/35be907) Improve block breaking code \\(\\#5809\\) by @onebeastchris & @Eclipse\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T13:01:15.692297Z",
+    "downloads": 29,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "9f7efdd104cb5a436290502d6f5337849853fdc6702fca067def9862b3305985344bdde86a03c7993ac8566c645b7f66fca5a73661b1bc02f80f0f288b1dbf34",
+          "sha1": "969cbb095f4402f2e0b91c0392e2f6db2d24674f"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/9Ddftoxo/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18132981,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "BDP9GyO5",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b923",
+    "version_number": "2.8.3-b923",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/35be907^...35be907):\n- [`35be907`](https://github.com/GeyserMC/Geyser/commit/35be907) Improve block breaking code \\(\\#5809\\) by @onebeastchris & @Eclipse\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T13:01:11.438977Z",
+    "downloads": 85,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "3a8222b269250675f4a86d3a2d78ab02c6e1197830657930271ba910712359bb8732f7ff9671718e046abc78f5f7d70bd0d1a8e2878e08d487548727373ebc7a",
+          "sha1": "ec2ff18e647291311df890f9afe167f7295d13fb"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/BDP9GyO5/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19510107,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "MQ8WToRH",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b923",
+    "version_number": "2.8.3-b923",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/35be907^...35be907):\n- [`35be907`](https://github.com/GeyserMC/Geyser/commit/35be907) Improve block breaking code \\(\\#5809\\) by @onebeastchris & @Eclipse\n",
+    "changelog_url": null,
+    "date_published": "2025-09-11T13:01:09.303409Z",
+    "downloads": 2,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "3ed7f7ea4f5d5188e57f2df422a6bfa8e36520ae119fce9e8210279ec06cc1300c65a270aceef4a2458a588e3bc5ccc53939889f35bade16fa884440957c84c6",
+          "sha1": "7d35e6abd79966948ce7c332140338d55d27004c"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/MQ8WToRH/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18769777,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "yYPV945u",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b922",
+    "version_number": "2.8.3-b922",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7dcdf5c^...7dcdf5c):\n- [`7dcdf5c`](https://github.com/GeyserMC/Geyser/commit/7dcdf5c) Add base-denied-permissions section to standalone command manager \\(\\#5672\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-10T23:35:08.912966Z",
+    "downloads": 159,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "7ac4064852c18c6efbc4dc470df60f6a766e47bd",
+          "sha512": "94082dff604a93630ebc2de63001ab1907d0b83692b291bcc188eaad6f42d39684f1051d8d9cfe8fa5797bec35b5488c9fe8c5c2e43f9c302b768cf957d7d737"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/yYPV945u/geyser-fabric-Geyser-Fabric-2.8.3-b922.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b922.jar",
+        "primary": true,
+        "size": 14032455,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "XQcV1y2X",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b922",
+    "version_number": "2.8.3-b922",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7dcdf5c^...7dcdf5c):\n- [`7dcdf5c`](https://github.com/GeyserMC/Geyser/commit/7dcdf5c) Add base-denied-permissions section to standalone command manager \\(\\#5672\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-10T23:35:06.186572Z",
+    "downloads": 3,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "b4c066d31cb870dfb743caadee004306f403d805",
+          "sha512": "6b09a3e504bf71f968e927fe327a020d5e1df030c9a9f75e54025c527e60b914df05d0f9c1e3e04728360adee3e16c90bf63c83434200589eff272427f973318"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/XQcV1y2X/geyser-neoforge-Geyser-Neoforge-2.8.3-b922.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b922.jar",
+        "primary": true,
+        "size": 13590896,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "K6w2fXgE",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b922",
+    "version_number": "2.8.3-b922",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7dcdf5c^...7dcdf5c):\n- [`7dcdf5c`](https://github.com/GeyserMC/Geyser/commit/7dcdf5c) Add base-denied-permissions section to standalone command manager \\(\\#5672\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-10T23:34:48.697135Z",
+    "downloads": 269,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "e3001461c93f96bced63aeb7ef5ecd627ae45893",
+          "sha512": "6dfdbc149b2d97fa737896f02b5f6fee9d152475a257ed5c7f98e4d359d5724aa0b2cf01b25f3c05e4ed726bfd0ad8bde01aae19989f7da0ea87db84a1c88ab1"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/K6w2fXgE/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19502273,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "qGBkXgxU",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b922",
+    "version_number": "2.8.3-b922",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7dcdf5c^...7dcdf5c):\n- [`7dcdf5c`](https://github.com/GeyserMC/Geyser/commit/7dcdf5c) Add base-denied-permissions section to standalone command manager \\(\\#5672\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-10T23:34:46.643861Z",
+    "downloads": 16,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "73e598b90a0740bae66b3c02f11d8f978e3881dd",
+          "sha512": "b8990e171cd23cc6ece45e573ba6464b5776f61dfe002422de1e15970c519cedf4bfc4421056c8e16a8f31b1df4b8f01f0c0728b819e351551fcc39ba5a80334"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/qGBkXgxU/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18125144,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "bungeecord"
+    ],
+    "id": "izgr0aQw",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Bungeecord-2.8.3-b922",
+    "version_number": "2.8.3-b922",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/7dcdf5c^...7dcdf5c):\n- [`7dcdf5c`](https://github.com/GeyserMC/Geyser/commit/7dcdf5c) Add base-denied-permissions section to standalone command manager \\(\\#5672\\) by @onebeastchris\n",
+    "changelog_url": null,
+    "date_published": "2025-09-10T23:34:45.183852Z",
+    "downloads": 3,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "18812b1ebf632fbf8156ede638e3c29569507bec",
+          "sha512": "6ca80d7f6508ec4cbfe43308865390cdf5efbb4fb0f2efb2ef28997b9c653b487b7cbed78caafe61954fecbae95c48a4ab3c12d08141499b891c6a5f4983dc20"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/izgr0aQw/Geyser-BungeeCord.jar",
+        "filename": "Geyser-BungeeCord.jar",
+        "primary": true,
+        "size": 18761963,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "fabric"
+    ],
+    "id": "YTyJQd4d",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Fabric-2.8.3-b921",
+    "version_number": "2.8.3-b921",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/175794e^...175794e):\n- [`175794e`](https://github.com/GeyserMC/Geyser/commit/175794e) Fix: Correct void collisions, check rotation values and correct world border check \\(\\#5797\\) by @purpurcof\n",
+    "changelog_url": null,
+    "date_published": "2025-09-04T13:00:56.890156Z",
+    "downloads": 1898,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "85701700fc71f39b3312628b9fce68d72608084a",
+          "sha512": "ae9f09a586cb2d35ea9dcd4d856f246c3920eb320eee0db29ddebdb7ce1f5756e3c80be5ef5a85024c8b499b4d6cc23afce281cf6b07355cd4aef0b576f2759c"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/YTyJQd4d/geyser-fabric-Geyser-Fabric-2.8.3-b921.jar",
+        "filename": "geyser-fabric-Geyser-Fabric-2.8.3-b921.jar",
+        "primary": true,
+        "size": 14032100,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "P7dR8mSH",
+        "file_name": null,
+        "dependency_type": "required"
+      }
+    ]
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "id": "JwbfWQdr",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Neoforge-2.8.3-b921",
+    "version_number": "2.8.3-b921",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/175794e^...175794e):\n- [`175794e`](https://github.com/GeyserMC/Geyser/commit/175794e) Fix: Correct void collisions, check rotation values and correct world border check \\(\\#5797\\) by @purpurcof\n",
+    "changelog_url": null,
+    "date_published": "2025-09-04T13:00:55.087277Z",
+    "downloads": 41,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha512": "99ae9000d211322023037e7a77ccf46ed58b5fb1c57f55d6a9a8cfd792781265d7ed9c7d8d935e9a02be5ad2b300f629bc03a2cf2ed9c909aef4de6fd6c3b1df",
+          "sha1": "a7c7c0b4400df2ef871d8cc93367a0ef8ba2f089"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/JwbfWQdr/geyser-neoforge-Geyser-Neoforge-2.8.3-b921.jar",
+        "filename": "geyser-neoforge-Geyser-Neoforge-2.8.3-b921.jar",
+        "primary": true,
+        "size": 13590513,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "velocity"
+    ],
+    "id": "wo2KwQQZ",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Velocity-2.8.3-b921",
+    "version_number": "2.8.3-b921",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/175794e^...175794e):\n- [`175794e`](https://github.com/GeyserMC/Geyser/commit/175794e) Fix: Correct void collisions, check rotation values and correct world border check \\(\\#5797\\) by @purpurcof\n",
+    "changelog_url": null,
+    "date_published": "2025-09-04T13:00:37.504351Z",
+    "downloads": 614,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "675cc0d8abc7a10cb60eaf9d33db1cb1d87a2f38",
+          "sha512": "cbf7823eb1ea74a9ec8486b147d74ef6ae583d65d1a71ba025130b1cdf40a09f2dcaed842a9894089a88af3246c43f8e0a9e4c90762386791ccd3adf8766c208"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/wo2KwQQZ/Geyser-Velocity.jar",
+        "filename": "Geyser-Velocity.jar",
+        "primary": true,
+        "size": 18124792,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "game_versions": [
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8"
+    ],
+    "loaders": [
+      "paper",
+      "spigot"
+    ],
+    "id": "Bt87qKeB",
+    "project_id": "wKkoqHrH",
+    "author_id": "Yb5ERais",
+    "featured": false,
+    "name": "Geyser-Spigot-2.8.3-b921",
+    "version_number": "2.8.3-b921",
+    "changelog": "### [Changes](https://github.com/GeyserMC/Geyser/compare/175794e^...175794e):\n- [`175794e`](https://github.com/GeyserMC/Geyser/commit/175794e) Fix: Correct void collisions, check rotation values and correct world border check \\(\\#5797\\) by @purpurcof\n",
+    "changelog_url": null,
+    "date_published": "2025-09-04T13:00:29.916336Z",
+    "downloads": 3043,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "hashes": {
+          "sha1": "2d793915d6629fa3f74ed8087a7c519218f6fde2",
+          "sha512": "41d074c2d1145e05fc8040d401812394cfde631962b97cb2be403b930cd07435ed0968c47188a1906f927db0b03f018ececd4fa4982f17b601f157db755163e5"
+        },
+        "url": "https://cdn.modrinth.com/data/wKkoqHrH/versions/Bt87qKeB/Geyser-Spigot.jar",
+        "filename": "Geyser-Spigot.jar",
+        "primary": true,
+        "size": 19501921,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  }
+]

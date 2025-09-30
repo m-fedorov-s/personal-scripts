@@ -80,53 +80,38 @@ func GetLatestBuild(id, ver string) (BuildInfo, error) {
 	return info.Builds[len(info.Builds)-1], nil
 }
 
-func LoadGeyserPlugin(dir, pluginName, versionsFile string) error {
+func LoadGeyserPlugin(dir, pluginName string, oldMeta *VersionInfo) (VersionInfo, error) {
 	fmt.Printf("Updating %v...\n", pluginName)
-	info, err := LoadVersionsInfo(versionsFile)
-	if err != nil {
-		fmt.Printf("[WARN] Failed to read versions info from %v\n", VERSIONS_FILE)
-	}
 	loadDir := dir + "/plugins"
-	ver, ok := info.Plugins[pluginName]
-	if ok {
+	if oldMeta != nil {
 		loadDir += "/update"
 	}
 	latestVer, err := GetLatestVersion(pluginName)
 	if err != nil {
-		return err
+		return VersionInfo{}, err
 	}
 	latestBuild, err := GetLatestBuild(pluginName, latestVer)
 	if err != nil {
-		return err
+		return VersionInfo{}, err
 	}
-	if ver.Build > 0 && ver.Build == latestBuild.Build {
+	if oldMeta != nil && oldMeta.Build == latestBuild.Build {
 		fmt.Printf("Already latest build of %v\n", pluginName)
-		return nil
+		return *oldMeta, nil
 	}
 	platform := "spigot"
 	fmt.Printf("Downloading %v version %v build #%v for %v\n", pluginName, latestVer, latestBuild.Build, platform)
-	checksum := latestBuild.Downloads["spigot"].Sha256
+	checksum := Checksum{
+		Type:  SHA256,
+		Value: latestBuild.Downloads["spigot"].Sha256,
+	}
 	url := fmt.Sprintf(GEYSER_API_DOWNLOAD_URL, pluginName, latestVer, latestBuild.Build, platform)
 	filename := fmt.Sprintf("%v-spigot.jar", pluginName)
 	err = LoadFileIfDoesNotExist(url, loadDir, filename, checksum)
 	if err != nil && !os.IsExist(err) {
-		return err
+		return VersionInfo{}, err
 	}
-	if info.Plugins == nil {
-		info.Plugins = make(map[string]VersionInfo)
-	}
-	info.Plugins[pluginName] = VersionInfo{
+	return VersionInfo{
 		Version: latestVer,
 		Build:   latestBuild.Build,
-	}
-	err = DumpVersionsInfo(info, versionsFile)
-	return err
-}
-
-func LoadGeyser(dir string) error {
-	return LoadGeyserPlugin(dir, "geyser", VERSIONS_FILE)
-}
-
-func LoadFloodgate(dir string) error {
-	return LoadGeyserPlugin(dir, "floodgate", VERSIONS_FILE)
+	}, nil
 }

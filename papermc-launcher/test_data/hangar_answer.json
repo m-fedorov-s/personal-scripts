@@ -1,0 +1,155 @@
+{
+  "createdAt": "2025-07-23T21:05:53.569922Z",
+  "id": 17737,
+  "projectId": 31,
+  "name": "5.4.2",
+  "visibility": "public",
+  "description": "- Added `cancel-swing-in-inventory` option for 1.15.2->1.16 inventory swing fix (by EnZaXD)\n- Fixed equippable allowed_entities handling\n- Fixed attribute modifiers in 1.21.5->1.21.6\n- Fixed anticheat flags when respawning with 1.21.2+ clients on older servers (by RK_01)\n- Fixed error on picking entities on older Paper servers (by EnZaXD)\n- Fixed missing biome name translations in 1.17.1->1.18 (by EnZaXD)\n- Fixed a client error on throwing potions on 1.9.4 servers specifically and potion color being lost on 1.8 servers\n- Fixed corners not being included in 1.8 chunk-border-fix (by dewgs, EnZaXD)\n\nIf you want to get larger version updates early, consider supporting me via https://viaversion.com/donate. See the [previous update notes](https://github.com/ViaVersion/ViaVersion/releases/tag/4.9.3) for more info.",
+  "stats": {
+    "totalDownloads": 0,
+    "platformDownloads": {}
+  },
+  "author": "kennytv",
+  "reviewState": "reviewed",
+  "channel": {
+    "createdAt": "2022-12-31T20:04:25.916259Z",
+    "name": "Release",
+    "description": null,
+    "color": "#14b8a6",
+    "flags": [
+      "PINNED",
+      "SENDS_NOTIFICATIONS",
+      "FROZEN"
+    ]
+  },
+  "pinnedStatus": "CHANNEL",
+  "downloads": {
+    "PAPER": {
+      "fileInfo": {
+        "name": "ViaVersion-5.4.2.jar",
+        "sizeBytes": 5659436,
+        "sha256Hash": "488ca1ddaac52b997f3633eab5a8213153df7339db640a350058d61d0b2ca333"
+      },
+      "externalUrl": null,
+      "downloadUrl": "https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/5.4.2/PAPER/ViaVersion-5.4.2.jar"
+    },
+    "VELOCITY": {
+      "fileInfo": {
+        "name": "ViaVersion-5.4.2.jar",
+        "sizeBytes": 5659436,
+        "sha256Hash": "488ca1ddaac52b997f3633eab5a8213153df7339db640a350058d61d0b2ca333"
+      },
+      "externalUrl": null,
+      "downloadUrl": "https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/5.4.2/PAPER/ViaVersion-5.4.2.jar"
+    }
+  },
+  "pluginDependencies": {
+    "PAPER": [
+      {
+        "name": "ViaBackwards",
+        "projectId": 12,
+        "required": false,
+        "externalUrl": "null",
+        "platform": "PAPER"
+      },
+      {
+        "name": "ViaRewind",
+        "projectId": 112,
+        "required": false,
+        "externalUrl": "null",
+        "platform": "PAPER"
+      }
+    ],
+    "VELOCITY": [
+      {
+        "name": "ViaBackwards",
+        "projectId": 12,
+        "required": false,
+        "externalUrl": "null",
+        "platform": "VELOCITY"
+      },
+      {
+        "name": "ViaRewind",
+        "projectId": 112,
+        "required": false,
+        "externalUrl": "null",
+        "platform": "VELOCITY"
+      }
+    ]
+  },
+  "platformDependencies": {
+    "PAPER": [
+      "1.10",
+      "1.10.1",
+      "1.10.2",
+      "1.11",
+      "1.11.1",
+      "1.11.2",
+      "1.12",
+      "1.12.1",
+      "1.12.2",
+      "1.13",
+      "1.13.1",
+      "1.13.2",
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3",
+      "1.14.4",
+      "1.15",
+      "1.15.1",
+      "1.15.2",
+      "1.16",
+      "1.16.1",
+      "1.16.2",
+      "1.16.3",
+      "1.16.4",
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8",
+      "1.8",
+      "1.8.8",
+      "1.9",
+      "1.9.1",
+      "1.9.2",
+      "1.9.3",
+      "1.9.4"
+    ],
+    "VELOCITY": [
+      "3.4"
+    ]
+  },
+  "platformDependenciesFormatted": {
+    "PAPER": [
+      "1.8-1.21.8"
+    ],
+    "VELOCITY": [
+      "3.4"
+    ]
+  },
+  "memberNames": null
+}
