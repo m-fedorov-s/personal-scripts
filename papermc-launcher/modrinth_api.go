@@ -78,7 +78,7 @@ func GetLatestVersionFromModrinth(project string, loader string) (ModrinthVersio
 }
 
 func LoadModrinthPlugin(dir, projectName string, oldMeta *VersionInfo) (VersionInfo, error) {
-	fmt.Printf("Updating %v...", projectName)
+	fmt.Printf("Updating %v...\n", projectName)
 	loadDir := dir + "/plugins"
 	if oldMeta != nil {
 		loadDir += "/update"
@@ -91,7 +91,7 @@ func LoadModrinthPlugin(dir, projectName string, oldMeta *VersionInfo) (VersionI
 		fmt.Printf("Already newest version of %v\n", projectName)
 		return *oldMeta, nil
 	}
-	fmt.Printf("Downloading %v version %v", projectName, latestVersion.VersionNumber)
+	fmt.Printf("Downloading %v version %v\n", projectName, latestVersion.VersionNumber)
 	checksum := Checksum{
 		Type:  SHA512,
 		Value: latestVersion.Files[0].Hashes.Sha512,

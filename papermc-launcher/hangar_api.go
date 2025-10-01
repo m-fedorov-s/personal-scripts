@@ -101,7 +101,7 @@ func GetVersionInfoHangar(project, version string) (HangarVersionInfo, error) {
 }
 
 func LoadHangarPlugin(dir, projectName string, oldMeta *VersionInfo) (VersionInfo, error) {
-	fmt.Printf("Updating %v...", projectName)
+	fmt.Printf("Updating %v...\n", projectName)
 	loadDir := dir + "/plugins"
 	if oldMeta != nil {
 		loadDir += "/update"
@@ -125,7 +125,7 @@ func LoadHangarPlugin(dir, projectName string, oldMeta *VersionInfo) (VersionInf
 	if downloadMeta.ExternalUrl != "" || downloadMeta.DownloadUrl == "" {
 		return VersionInfo{}, fmt.Errorf("Detected hangar external download!")
 	}
-	fmt.Printf("Downloading %v version %v", projectName, latestVersion)
+	fmt.Printf("Downloading %v version %v\n", projectName, latestVersion)
 	checksum := Checksum{
 		Type:  SHA256,
 		Value: downloadMeta.FileInfo.Sha256Hash,
