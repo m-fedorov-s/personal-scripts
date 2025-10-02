@@ -182,12 +182,19 @@ type Player struct {
 }
 
 type Config struct {
-	WorkDir        string     `json:"work_dir"`
-	WarnBefore     []Duration `json:"warn_before"`
-	AccessSchedule Schedule   `json:"schedule"`
-	Memory         string     `json:"memory"`
-	Players        []Player   `json:"players"`
-	GC             string     `json:"gc"`
+	WorkDir        string `json:"work_dir"`
+	BackupSchedule struct {
+		DayTime `json:"time"`
+		Day     Weekday `json:"day"`
+	} `json:"backup"`
+	WarnBefore []struct {
+		Offset  Duration `json:"offset"`
+		Message string   `json:"message"`
+	} `json:"warn_before"`
+	AccessSchedule Schedule `json:"schedule"`
+	Memory         string   `json:"memory"`
+	Players        []Player `json:"players"`
+	GC             string   `json:"gc"`
 }
 
 func LoadConfig(filename string) (Config, error) {
