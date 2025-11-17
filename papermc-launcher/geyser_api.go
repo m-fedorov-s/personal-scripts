@@ -44,9 +44,9 @@ type GeyserVersionInfo struct {
 	Builds      []BuildInfo `json:"builds"`
 }
 
-func GetLatestVersion(id string) (string, error) {
+func GetLatestGeyserVersionInfoImpl(url, id string) (string, error) {
 	var info ProjectInfo
-	resp, err := http.Get(fmt.Sprintf(GEYSER_API_PROJECT_INFO, id))
+	resp, err := http.Get(fmt.Sprintf(url, id))
 	if err != nil {
 		return "", err
 	}
@@ -62,9 +62,13 @@ func GetLatestVersion(id string) (string, error) {
 	return info.Versions[len(info.Versions)-1], nil
 }
 
-func GetLatestBuild(id, ver string) (BuildInfo, error) {
+func GetLatestGeyserVersionInfo(id string) (string, error) {
+	return GetLatestGeyserVersionInfoImpl(GEYSER_API_PROJECT_INFO, id)
+}
+
+func GetLatestGeyserBuildImpl(url, id, ver string) (BuildInfo, error) {
 	var info GeyserVersionInfo
-	resp, err := http.Get(fmt.Sprintf(GEYSER_API_VERSION_INFO, id, ver))
+	resp, err := http.Get(fmt.Sprintf(url, id, ver))
 	if err != nil {
 		return BuildInfo{}, err
 	}
@@ -80,17 +84,21 @@ func GetLatestBuild(id, ver string) (BuildInfo, error) {
 	return info.Builds[len(info.Builds)-1], nil
 }
 
+func GetLatestGeyserBuild(id, ver string) (BuildInfo, error) {
+	return GetLatestGeyserBuildImpl(GEYSER_API_VERSION_INFO, id, ver)
+}
+
 func LoadGeyserPlugin(dir, pluginName string, oldMeta *VersionInfo) (VersionInfo, error) {
 	fmt.Printf("Updating %v...\n", pluginName)
 	loadDir := dir + "/plugins"
 	if oldMeta != nil {
 		loadDir += "/update"
 	}
-	latestVer, err := GetLatestVersion(pluginName)
+	latestVer, err := GetLatestGeyserVersionInfo(pluginName)
 	if err != nil {
 		return VersionInfo{}, err
 	}
-	latestBuild, err := GetLatestBuild(pluginName, latestVer)
+	latestBuild, err := GetLatestGeyserBuild(pluginName, latestVer)
 	if err != nil {
 		return VersionInfo{}, err
 	}

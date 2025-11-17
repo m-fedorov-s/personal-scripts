@@ -1,40 +1,58 @@
 package main
 
 import (
+	"fmt"
+	"io"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"testing"
 )
 
-func TestUpdateGeyser(t *testing.T) {
-	dir := t.TempDir()
-	err := os.MkdirAll(dir+"/plugins/update", 0777)
+func TestParseGeyserResponceVersion(t *testing.T) {
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		file, err := os.Open("test_data/geyser_answer_project_info.json")
+		if err != nil {
+			t.Fatalf("Failed to open test file: %v", err)
+		}
+		defer file.Close()
+		n, err := io.Copy(w, file)
+		if err != nil {
+			t.Errorf("Failed to copy all data to the mock response (copied %v bytes): %v", n, err)
+		}
+	}))
+	defer ts.Close()
+	url := fmt.Sprintf("%v/%%v", ts.URL)
+	version, err := GetLatestGeyserVersionInfoImpl(url, "geyser")
 	if err != nil {
-		t.Fatalf("Failed to create dir: %v", err)
+		t.Fatal(err)
 	}
-	oldMeta := VersionInfo{
-		Version: "2.6.1",
-		Build:   701,
-	}
-	newMeta, err := LoadGeyserPlugin(dir, "geyser", &oldMeta)
-	if err != nil {
-		t.Errorf("Failed to load geyser: %v", err)
-	}
-	if newMeta.Build < 702 {
-		t.Errorf("Wring build number in new meta: %v", newMeta.Build)
+	expected := "2.9.0"
+	if version != expected {
+		t.Errorf("Got wrong version! Expected %v, got %v", expected, version)
 	}
 }
-func TestUpdateFloodgate(t *testing.T) {
-	dir := t.TempDir()
-	err := os.MkdirAll(dir+"/plugins/update", 0777)
+
+func TestParseGeyserResponceBuild(t *testing.T) {
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		file, err := os.Open("test_data/geyser_answer_version_info.json")
+		if err != nil {
+			t.Fatalf("Failed to open test file: %v", err)
+		}
+		defer file.Close()
+		n, err := io.Copy(w, file)
+		if err != nil {
+			t.Errorf("Failed to copy all data to the mock response (copied %v bytes): %v", n, err)
+		}
+	}))
+	defer ts.Close()
+	url := fmt.Sprintf("%v/%%v/%%v", ts.URL)
+	info, err := GetLatestGeyserBuildImpl(url, "geyser", "2.9.0")
 	if err != nil {
-		t.Fatalf("Failed to create dir: %v", err)
+		t.Fatal(err)
 	}
-	oldMeta := &VersionInfo{
-		Version: "2.2.4",
-		Build:   42,
-	}
-	_, err = LoadGeyserPlugin(dir, "floodgate", oldMeta)
-	if err != nil {
-		t.Errorf("Failed to load floodgate: %v", err)
+	expected := 984
+	if info.Build != expected {
+		t.Errorf("Got wrong version! Expected %v, got %v", expected, info.Build)
 	}
 }
