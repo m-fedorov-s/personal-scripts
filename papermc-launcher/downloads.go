@@ -4,14 +4,11 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
-	"encoding/json"
-	"errors"
 	"fmt"
 	"hash"
 	"io"
 	"net/http"
 	"os"
-	"strings"
 )
 
 const PAPER_API_VERSION_URL = "https://api.papermc.io/v2/projects/paper"
@@ -71,67 +68,4 @@ func LoadFileIfDoesNotExist(url, dir, filename string, checksum Checksum) error 
 		return fmt.Errorf("Checksum does not match")
 	}
 	return nil
-}
-
-func LoadPaper(dir string, oldMeta VersionInfo) (VersionInfo, error) {
-	resp, err := http.Get(PAPER_API_VERSION_URL)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
-	var parsed map[string]interface{}
-	json.Unmarshal(body, &parsed)
-	version := parsed["versions"].([]interface{})[len(parsed["versions"].([]interface{}))-1].(string)
-	if version != oldMeta.Version {
-		fmt.Printf("A new version of paper found: %v (current is %v). Would you like to update? [y/N]\n", version, oldMeta.Version)
-		var answer string
-		fmt.Scanln(&answer)
-		if strings.ToLower(answer) != "yes" && strings.ToLower(answer) != "y" {
-			version = oldMeta.Version
-		}
-	}
-	fmt.Println("Chosen version: " + version)
-	buildsResp, err := http.Get(fmt.Sprintf(PAPER_API_BUILDS_URL_TEMPLATE, version))
-	if err != nil {
-		panic(err)
-	}
-	defer buildsResp.Body.Close()
-	body, err = io.ReadAll(buildsResp.Body)
-	if err != nil {
-		panic(err)
-	}
-	json.Unmarshal(body, &parsed)
-	build := parsed["builds"].([]interface{})[len(parsed["builds"].([]interface{}))-1].(map[string]interface{})
-	buildNumber := int(build["build"].(float64))
-	if version == oldMeta.Version && oldMeta.Build > 0 && oldMeta.Build == buildNumber {
-		fmt.Println("Already latest paper build")
-		return oldMeta, nil
-	}
-	filename := build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["name"].(string)
-	checksum := Checksum{
-		Type:  SHA256,
-		Value: build["downloads"].(map[string]interface{})["application"].(map[string]interface{})["sha256"].(string),
-	}
-	url := fmt.Sprintf(PAPER_API_JAR_DOWNLOAD_TEMPLATE, version, buildNumber, filename)
-	err = LoadFileIfDoesNotExist(url, dir, filename, checksum)
-	if err != nil && !os.IsExist(err) {
-		return VersionInfo{}, err
-	}
-	err = os.Remove(dir + "/paper.jar")
-	if err != nil && !errors.Is(err, os.ErrNotExist) {
-		return VersionInfo{}, err
-	}
-	err = os.Symlink(filename, dir+"/paper.jar")
-	if err != nil {
-		return VersionInfo{}, err
-	}
-	fmt.Printf("Sucessfuly downloaded %v\n", filename)
-	return VersionInfo{
-		Version: version,
-		Build:   buildNumber,
-	}, nil
 }
