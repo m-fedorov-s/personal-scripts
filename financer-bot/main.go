@@ -13,6 +13,7 @@ import (
 
 	"financer/internal/handler"
 	"financer/internal/storage"
+	"financer/internal/worker"
 )
 
 func main() {
@@ -51,8 +52,12 @@ func main() {
 		log.Fatalf("Failed to create bot: %v", err)
 	}
 
+	// Start report worker
+	rw := worker.NewReportWorker(b, s, 10)
+	go rw.Start(ctx)
+
 	// Register handlers
-	opts := handler.RegisterHandlers(b, s)
+	opts := handler.RegisterHandlers(b, s, rw.Reschedule)
 	for _, opt := range opts {
 		opt(b)
 	}

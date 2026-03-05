@@ -5,6 +5,8 @@ import (
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
 	"log/slog"
+
+	"financer/internal/storage"
 )
 
 type StartHandler struct {
@@ -17,7 +19,10 @@ func (h *StartHandler) Handle(ctx context.Context, b *bot.Bot, update *models.Up
 	}
 	chatID := update.Message.Chat.ID
 	chatSettings, err := h.Storage.GetChat(chatID)
-	if err != nil {
+	if err == storage.NotFoundError {
+		chatSettings = storage.ChatProfile{}
+		slog.Info("Regestering new chat", "chatID", chatID)
+	} else if err != nil {
 		slog.Error("Error starting chat", "chatID", chatID, "error", err)
 		return
 	}

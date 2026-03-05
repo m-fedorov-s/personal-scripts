@@ -1,10 +1,12 @@
 services:
-  financer-bot:
+  financer:
     build: .
-    container_name: financer-bot
+    container_name: bot
     restart: unless-stopped
     environment:
       - BOT_TOKEN=${BOT_TOKEN}
       - DATA_DIR=/app/data
     volumes:
-      - ./data:/app/data
+      - financer-data:/app/data
+volumes:
+  financer-data:

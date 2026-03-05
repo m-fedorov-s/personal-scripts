@@ -3,11 +3,11 @@ package handler
 import (
 	"context"
 	"fmt"
-	"strconv"
-	"strings"
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
 	"log/slog"
+	"strconv"
+	"strings"
 )
 
 type SetLimitHandler struct {

@@ -8,7 +8,8 @@ import (
 )
 
 type BaseHandler struct {
-	Storage storage.Storage
+	Storage    storage.Storage
+	Reschedule chan *storage.DayTime
 }
 
 func (h *BaseHandler) IsGroupChat(update *models.Update) bool {

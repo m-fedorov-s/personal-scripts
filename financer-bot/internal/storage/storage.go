@@ -3,6 +3,7 @@ package storage
 import (
 	"bytes"
 	"encoding/gob"
+	"fmt"
 	"time"
 
 	badger "github.com/dgraph-io/badger/v4"
@@ -33,10 +34,13 @@ type ChatProfile struct {
 	MaxRecordID      int64
 	ReportTime       *DayTime
 	ImmediateReports bool
+	LastReportSent   time.Time
 }
 
+var NotFoundError = fmt.Errorf("Object not found")
+
 func (cp *ChatProfile) Report() string {
-	return "Your current balance: " + string(cp.CurrentBalance) // Simplified for brevity
+	return fmt.Sprintf("Your current balance: %d", cp.CurrentBalance)
 }
 
 func (cp *ChatProfile) DecodeFrom(data []byte) error {
@@ -60,10 +64,18 @@ func (cp *ChatProfile) ConsumeRecord(r Record) {
 	}
 }
 
+type ChatIterator interface {
+	Next() bool
+	Value() (int64, ChatProfile, error)
+	Close() error
+}
+
 type Storage interface {
 	GetChat(chatID int64) (ChatProfile, error)
 	SetChat(chatID int64, cp *ChatProfile) error
 	SaveRecord(chatID int64, record Record) error
+	GetRecords(chatID int64, since time.Time) ([]Record, error)
+	Chats() ChatIterator
 }
 
 type BadgerStorage struct {
@@ -82,6 +94,9 @@ func (s *BadgerStorage) GetChat(chatID int64) (ChatProfile, error) {
 			return err
 		}
 		item, err := txn.Get(key)
+		if err == badger.ErrKeyNotFound {
+			return NotFoundError
+		}
 		if err != nil {
 			return err
 		}
@@ -119,6 +134,97 @@ func (s *BadgerStorage) SaveRecord(chatID int64, record Record) error {
 		}
 		return txn.Set(encodedKey, encodedRecord)
 	})
+}
+
+func (s *BadgerStorage) GetRecords(chatID int64, since time.Time) ([]Record, error) {
+	var records []Record
+	err := s.db.View(func(txn *badger.Txn) error {
+		it := txn.NewIterator(badger.DefaultIteratorOptions)
+		defer it.Close()
+
+		prefix, err := encode(RecordKey{ChatID: chatID})
+		if err != nil {
+			return err
+		}
+
+		for it.Seek(prefix); it.ValidForPrefix(prefix); it.Next() {
+			item := it.Item()
+			err := item.Value(func(val []byte) error {
+				var r Record
+				if err := decode(val, &r); err != nil {
+					return err
+				}
+				if r.Date.After(since) || r.Date.Equal(since) {
+					records = append(records, r)
+				}
+				return nil
+			})
+			if err != nil {
+				return err
+			}
+		}
+		return nil
+	})
+	return records, err
+}
+
+func (s *BadgerStorage) Chats() ChatIterator {
+	txn := s.db.NewTransaction(false)
+	it := txn.NewIterator(badger.DefaultIteratorOptions)
+	return &BadgerChatIterator{
+		txn: txn,
+		it:  it,
+	}
+}
+
+type BadgerChatIterator struct {
+	txn *badger.Txn
+	it  *badger.Iterator
+}
+
+func (it *BadgerChatIterator) Next() bool {
+	if !it.it.Valid() {
+		it.it.Rewind()
+	} else {
+		it.it.Next()
+	}
+
+	// Skip non-int64 keys (records)
+	for it.it.Valid() {
+		key := it.it.Item().Key()
+		var chatID int64
+		if err := decode(key, &chatID); err == nil {
+			return true
+		}
+		it.it.Next()
+	}
+	return false
+}
+
+func (it *BadgerChatIterator) Value() (int64, ChatProfile, error) {
+	item := it.it.Item()
+	var chatID int64
+	if err := decode(item.Key(), &chatID); err != nil {
+		return 0, ChatProfile{}, err
+	}
+
+	var cp ChatProfile
+	err := item.Value(func(val []byte) error {
+		return cp.DecodeFrom(val)
+	})
+	return chatID, cp, err
+}
+
+func (it *BadgerChatIterator) Close() error {
+	it.it.Close()
+	it.txn.Discard()
+	return nil
+}
+
+func decode(data []byte, o any) error {
+	buf := bytes.NewBuffer(data)
+	decoder := gob.NewDecoder(buf)
+	return decoder.Decode(o)
 }
 
 func encode(o any) ([]byte, error) {

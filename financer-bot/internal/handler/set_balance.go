@@ -3,12 +3,12 @@ package handler
 import (
 	"context"
 	"fmt"
-	"strconv"
-	"strings"
-	"time"
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
 	"log/slog"
+	"strconv"
+	"strings"
+	"time"
 )
 
 type SetBalanceHandler struct {
