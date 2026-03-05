@@ -29,6 +29,17 @@ func main() {
 	flag.StringVar(&token, "token", "", "bot token")
 	flag.Parse()
 
+	if token == "" {
+		token = os.Getenv("BOT_TOKEN")
+	}
+	if dataDir == "./data/" && os.Getenv("DATA_DIR") != "" {
+		dataDir = os.Getenv("DATA_DIR")
+	}
+
+	if token == "" {
+		log.Fatal("BOT_TOKEN is required")
+	}
+
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug})))
 
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
@@ -49,9 +60,10 @@ func main() {
 		bot.WithMessageTextHandler("/report", bot.MatchTypeExact, getReportHandler(db)),
 		bot.WithMessageTextHandler("/toggleReport", bot.MatchTypeExact, getToggleReportsHandler(db)),
 	}
+
 	b, err := bot.New(token, opts...)
 	if err != nil {
-		log.Fatalf("Failed to start bot: %v", err)
+		log.Fatalf("Failed to create bot: %v", err)
 	}
 	info, err := b.GetWebhookInfo(ctx)
 	if err != nil {
