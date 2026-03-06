@@ -86,6 +86,7 @@ func TestMessageHandler_Handle(t *testing.T) {
 	s.chats[chatID] = storage.ChatProfile{
 		DayLimit:       1000,
 		CurrentBalance: 5000,
+		LastRecordTime: time.Now(),
 	}
 
 	h := &MessageHandler{

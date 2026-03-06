@@ -37,3 +37,50 @@ func TestGenerate(t *testing.T) {
 		t.Errorf("Expected monthly average %f, got %f", expectedAverage, stats.MonthlyAverage)
 	}
 }
+
+func TestGenerateChart_ReturnsPNG(t *testing.T) {
+	now := time.Now()
+	records := []storage.Record{
+		{Amount: 100, Date: now.Add(-1 * time.Hour)},
+		{Amount: 250, Date: now.Add(-25 * time.Hour)},
+		{Amount: 50, Date: time.Date(now.Year(), now.Month(), 1, 10, 0, 0, 0, now.Location())},
+	}
+
+	pngBytes, err := generateSpendingChart(records, now)
+	if err != nil {
+		t.Fatalf("generateSpendingChart returned error: %v", err)
+	}
+	if len(pngBytes) == 0 {
+		t.Fatal("generateSpendingChart returned empty bytes")
+	}
+
+	// Verify PNG magic bytes: 0x89 0x50 0x4E 0x47
+	if pngBytes[0] != 0x89 || pngBytes[1] != 0x50 || pngBytes[2] != 0x4E || pngBytes[3] != 0x47 {
+		t.Errorf("Output does not start with PNG magic bytes, got: %x %x %x %x",
+			pngBytes[0], pngBytes[1], pngBytes[2], pngBytes[3])
+	}
+}
+
+func TestGenerateChart_EmptyRecords(t *testing.T) {
+	now := time.Now()
+	pngBytes, err := generateSpendingChart([]storage.Record{}, now)
+	if err != nil {
+		t.Fatalf("generateSpendingChart with empty records returned error: %v", err)
+	}
+	if len(pngBytes) == 0 {
+		t.Fatal("generateSpendingChart with empty records returned empty bytes")
+	}
+}
+
+func TestGenerate_ChartPopulated(t *testing.T) {
+	now := time.Now()
+	cp := storage.ChatProfile{CurrentBalance: 500}
+	records := []storage.Record{
+		{Amount: 75, Date: now.Add(-2 * time.Hour)},
+	}
+
+	stats := Generate(cp, records)
+	if len(stats.Chart) == 0 {
+		t.Error("Expected Stats.Chart to be populated, got empty slice")
+	}
+}

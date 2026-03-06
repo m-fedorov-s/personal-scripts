@@ -1,6 +1,7 @@
 package worker
 
 import (
+	"bytes"
 	"context"
 	"log/slog"
 	"time"
@@ -164,12 +165,26 @@ func (w *ReportWorker) sendReport(ctx context.Context, chatID int64, cp storage.
 	stats := report.Generate(cp, records)
 	msg := report.Format(stats)
 
-	_, err = w.bot.SendMessage(ctx, &bot.SendMessageParams{
-		ChatID:          chatID,
-		MessageThreadID: cp.TopicID,
-		Text:            msg,
-		ParseMode:       models.ParseModeHTML,
-	})
+	// Send chart image with the report text as caption when available
+	if len(stats.Chart) > 0 {
+		_, err = w.bot.SendPhoto(ctx, &bot.SendPhotoParams{
+			ChatID:          chatID,
+			MessageThreadID: cp.TopicID,
+			Photo: &models.InputFileUpload{
+				Filename: "spending_chart.png",
+				Data:     bytes.NewReader(stats.Chart),
+			},
+			Caption:   msg,
+			ParseMode: models.ParseModeHTML,
+		})
+	} else {
+		_, err = w.bot.SendMessage(ctx, &bot.SendMessageParams{
+			ChatID:          chatID,
+			MessageThreadID: cp.TopicID,
+			Text:            msg,
+			ParseMode:       models.ParseModeHTML,
+		})
+	}
 
 	if err != nil {
 		slog.Error("Failed to send daily report", "chatID", chatID, "error", err)
