@@ -82,18 +82,19 @@ type BadgerStorage struct {
 	db *badger.DB
 }
 
-func NewBadgerStorage(db *badger.DB) *BadgerStorage {
-	return &BadgerStorage{db: db}
+// NewBadgerStorage creates a BadgerStorage and runs any pending schema migrations.
+// It returns an error if migrations fail, which should be treated as fatal.
+func NewBadgerStorage(db *badger.DB) (*BadgerStorage, error) {
+	if err := RunMigrations(db); err != nil {
+		return nil, fmt.Errorf("storage migrations: %w", err)
+	}
+	return &BadgerStorage{db: db}, nil
 }
 
 func (s *BadgerStorage) GetChat(chatID int64) (ChatProfile, error) {
 	var result ChatProfile
 	err := s.db.View(func(txn *badger.Txn) error {
-		key, err := encode(chatID)
-		if err != nil {
-			return err
-		}
-		item, err := txn.Get(key)
+		item, err := txn.Get(chatProfileKey(chatID))
 		if err == badger.ErrKeyNotFound {
 			return NotFoundError
 		}
@@ -109,52 +110,46 @@ func (s *BadgerStorage) GetChat(chatID int64) (ChatProfile, error) {
 
 func (s *BadgerStorage) SetChat(chatID int64, cp *ChatProfile) error {
 	return s.db.Update(func(txn *badger.Txn) error {
-		key, err := encode(chatID)
-		if err != nil {
-			return err
-		}
 		value, err := encode(cp)
 		if err != nil {
 			return err
 		}
-		return txn.Set(key, value)
+		return txn.Set(chatProfileKey(chatID), value)
 	})
 }
 
 func (s *BadgerStorage) SaveRecord(chatID int64, record Record) error {
 	return s.db.Update(func(txn *badger.Txn) error {
-		key := RecordKey{ChatID: chatID, RecordID: record.ID}
-		encodedKey, err := encode(key)
-		if err != nil {
-			return err
-		}
 		encodedRecord, err := encode(record)
 		if err != nil {
 			return err
 		}
-		return txn.Set(encodedKey, encodedRecord)
+		return txn.Set(recordKey(chatID, record.ID), encodedRecord)
 	})
 }
 
+// GetRecords returns all records for chatID whose Date is >= since.
+// It uses recordPrefix(chatID) for efficient prefix iteration — this works
+// correctly because the FDB tuple layer guarantees that recordKey(chatID, *)
+// always starts with recordPrefix(chatID).
 func (s *BadgerStorage) GetRecords(chatID int64, since time.Time) ([]Record, error) {
 	var records []Record
+	prefix := recordPrefix(chatID)
+
 	err := s.db.View(func(txn *badger.Txn) error {
-		it := txn.NewIterator(badger.DefaultIteratorOptions)
+		opts := badger.DefaultIteratorOptions
+		opts.Prefix = prefix
+		it := txn.NewIterator(opts)
 		defer it.Close()
 
-		prefix, err := encode(RecordKey{ChatID: chatID})
-		if err != nil {
-			return err
-		}
-
-		for it.Seek(prefix); it.ValidForPrefix(prefix); it.Next() {
+		for it.Rewind(); it.Valid(); it.Next() {
 			item := it.Item()
 			err := item.Value(func(val []byte) error {
 				var r Record
 				if err := decode(val, &r); err != nil {
 					return err
 				}
-				if r.Date.After(since) || r.Date.Equal(since) {
+				if !r.Date.Before(since) {
 					records = append(records, r)
 				}
 				return nil
@@ -189,11 +184,12 @@ func (it *BadgerChatIterator) Next() bool {
 		it.it.Next()
 	}
 
-	// Skip non-int64 keys (records)
+	// Skip keys that are not chat profile keys (records, metadata).
 	for it.it.Valid() {
 		key := it.it.Item().Key()
-		var chatID int64
-		if err := decode(key, &chatID); err == nil {
+		// A chat profile key unpacks to a 2-element tuple {nsChat, chatID}.
+		// We detect it by attempting to decode and checking the namespace.
+		if isChatProfileKey(key) {
 			return true
 		}
 		it.it.Next()
@@ -203,13 +199,13 @@ func (it *BadgerChatIterator) Next() bool {
 
 func (it *BadgerChatIterator) Value() (int64, ChatProfile, error) {
 	item := it.it.Item()
-	var chatID int64
-	if err := decode(item.Key(), &chatID); err != nil {
+	chatID, err := decodeChatProfileKey(item.Key())
+	if err != nil {
 		return 0, ChatProfile{}, err
 	}
 
 	var cp ChatProfile
-	err := item.Value(func(val []byte) error {
+	err = item.Value(func(val []byte) error {
 		return cp.DecodeFrom(val)
 	})
 	return chatID, cp, err

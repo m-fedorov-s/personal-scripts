@@ -22,7 +22,10 @@ func TestBadgerStorage(t *testing.T) {
 	}
 	defer db.Close()
 
-	s := NewBadgerStorage(db)
+	s, err := NewBadgerStorage(db)
+	if err != nil {
+		t.Fatalf("NewBadgerStorage() error = %v", err)
+	}
 	chatID := int64(12345)
 
 	// Test SetChat and GetChat
@@ -60,11 +63,10 @@ func TestBadgerStorage(t *testing.T) {
 		t.Fatalf("SaveRecord() error = %v", err)
 	}
 
-	// Verify record exists in DB (internal check)
+	// Verify record exists in DB using the new tuple-encoded key.
 	err = db.View(func(txn *badger.Txn) error {
-		key := RecordKey{ChatID: chatID, RecordID: record.ID}
-		encodedKey, _ := encode(key)
-		_, err := txn.Get(encodedKey)
+		key := recordKey(chatID, record.ID)
+		_, err := txn.Get(key)
 		return err
 	})
 	if err != nil {
@@ -79,8 +81,11 @@ func TestBadgerStorage_GetNonExistentChat(t *testing.T) {
 	db, _ := badger.Open(badger.DefaultOptions(tmpDir).WithLogger(nil))
 	defer db.Close()
 
-	s := NewBadgerStorage(db)
-	_, err := s.GetChat(999)
+	s, err := NewBadgerStorage(db)
+	if err != nil {
+		t.Fatalf("NewBadgerStorage() error = %v", err)
+	}
+	_, err = s.GetChat(999)
 	if err == nil {
 		t.Error("GetChat() for non-existent chat should return error")
 	}

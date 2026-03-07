@@ -35,7 +35,7 @@ func (h *ReportHandler) Handle(ctx context.Context, b *bot.Bot, update *models.U
 		return
 	}
 
-	stats := report.Generate(chatSettings, records)
+	stats := report.Generate(chatSettings, records, time.Now())
 	msg := report.Format(stats)
 
 	if len(stats.Chart) > 0 {

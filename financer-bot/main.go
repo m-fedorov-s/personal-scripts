@@ -44,7 +44,10 @@ func main() {
 	}
 	defer db.Close()
 
-	s := storage.NewBadgerStorage(db)
+	s, err := storage.NewBadgerStorage(db)
+	if err != nil {
+		log.Fatalf("Failed to initialise storage: %v", err)
+	}
 
 	// Create bot instance first
 	b, err := bot.New(token)

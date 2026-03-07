@@ -25,21 +25,38 @@ type Stats struct {
 	Chart          []byte
 }
 
-func Generate(cp storage.ChatProfile, records []storage.Record) Stats {
-	now := time.Now()
+// Generate computes spending statistics from records relative to now.
+//
+// now is passed explicitly so callers can control the reference time, making
+// the function deterministic and testable without mocking time.Now().
+//
+// All boundary calculations are performed in UTC to avoid timezone mismatches
+// between the server locale and the UTC timestamps stored in the database.
+func Generate(cp storage.ChatProfile, records []storage.Record, now time.Time) Stats {
+	// Normalise to UTC so comparisons are consistent regardless of the
+	// timezone of the server running the bot.
+	now = now.UTC()
+
+	// dayStart is the beginning of today in UTC (00:00:00.000000000).
+	dayStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
+	// monthStart is the first instant of the current month in UTC.
+	monthStart := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, time.UTC)
+
 	var spending24h int64
 	var monthlyTotal int64
 
-	dayStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location())
-	monthStart := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, now.Location())
-
 	for _, r := range records {
-		// 24h spending (from today's start to now)
-		if r.Date.After(dayStart) {
+		rUTC := r.Date.UTC()
+
+		// 24h spending: records from today's midnight (inclusive) up to now.
+		// Bug fix: use !rUTC.Before(dayStart) instead of rUTC.After(dayStart)
+		// so that records timestamped exactly at midnight are included.
+		if !rUTC.Before(dayStart) && !rUTC.After(now) {
 			spending24h += int64(r.Amount)
 		}
-		// Monthly total
-		if r.Date.After(monthStart) || r.Date.Equal(monthStart) {
+
+		// Monthly total: records from the first of the month (inclusive) up to now.
+		if !rUTC.Before(monthStart) && !rUTC.After(now) {
 			monthlyTotal += int64(r.Amount)
 		}
 	}
@@ -63,14 +80,17 @@ func Generate(cp storage.ChatProfile, records []storage.Record) Stats {
 // generateSpendingChart builds a bar chart of daily spending for the current month
 // and returns the PNG-encoded image as a byte slice.
 func generateSpendingChart(records []storage.Record, now time.Time) ([]byte, error) {
+	now = now.UTC()
 	daysInMonth := now.Day()
-	monthStart := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, now.Location())
+	monthStart := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, time.UTC)
 
-	// Aggregate spending per day (1-indexed, day 1 = index 0)
+	// Aggregate spending per day (1-indexed, day 1 = index 0).
 	dailySpending := make([]float64, daysInMonth)
 	for _, r := range records {
-		if (r.Date.After(monthStart) || r.Date.Equal(monthStart)) && !r.Date.After(now) {
-			day := r.Date.Day() // 1-based
+		rUTC := r.Date.UTC()
+		// Include records from month start (inclusive) up to now (inclusive).
+		if !rUTC.Before(monthStart) && !rUTC.After(now) {
+			day := rUTC.Day() // 1-based
 			if day >= 1 && day <= daysInMonth {
 				dailySpending[day-1] += float64(r.Amount)
 			}

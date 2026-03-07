@@ -162,7 +162,7 @@ func (w *ReportWorker) sendReport(ctx context.Context, chatID int64, cp storage.
 		return
 	}
 
-	stats := report.Generate(cp, records)
+	stats := report.Generate(cp, records, time.Now())
 	msg := report.Format(stats)
 
 	// Send chart image with the report text as caption when available
