@@ -124,7 +124,7 @@ func LoadPaper(dir string, oldMeta VersionInfo) (VersionInfo, error) {
 	if err != nil {
 		return VersionInfo{}, err
 	}
-	chosenVersion := latestVersion.Version.Id.String()
+	chosenVersion := latestVersion.Version.Id.Original()
 	if latestVersion.Version.Id.String() != oldMeta.Version {
 		fmt.Printf("A new version of paper found: %v (current is %v). Would you like to update? [y/N]\n", latestVersion.Version.Id.String(), oldMeta.Version)
 		var answer string
