@@ -1,13 +1,11 @@
 package worker
 
 import (
-	"bytes"
 	"context"
 	"log/slog"
 	"time"
 
 	"github.com/go-telegram/bot"
-	"github.com/go-telegram/bot/models"
 
 	"financer/internal/report"
 	"financer/internal/storage"
@@ -155,42 +153,17 @@ func (w *ReportWorker) dispatchReports(ctx context.Context) {
 
 func (w *ReportWorker) sendReport(ctx context.Context, chatID int64, cp storage.ChatProfile) {
 	now := time.Now()
-	monthStart := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, now.Location())
-	records, err := w.storage.GetRecords(chatID, monthStart)
-	if err != nil {
-		slog.Error("Failed to get records for report", "chatID", chatID, "error", err)
+	if err := report.Send(ctx, w.bot, w.storage, report.Daily, chatID, cp.TopicID, nil); err != nil {
+		// Already logged by Send
 		return
 	}
 
-	stats := report.Generate(cp, records, time.Now())
-	msg := report.Format(stats)
-
-	// Send chart image with the report text as caption when available
-	if len(stats.Chart) > 0 {
-		_, err = w.bot.SendPhoto(ctx, &bot.SendPhotoParams{
-			ChatID:          chatID,
-			MessageThreadID: cp.TopicID,
-			Photo: &models.InputFileUpload{
-				Filename: "spending_chart.png",
-				Data:     bytes.NewReader(stats.Chart),
-			},
-			Caption:   msg,
-			ParseMode: models.ParseModeHTML,
-		})
-	} else {
-		_, err = w.bot.SendMessage(ctx, &bot.SendMessageParams{
-			ChatID:          chatID,
-			MessageThreadID: cp.TopicID,
-			Text:            msg,
-			ParseMode:       models.ParseModeHTML,
-		})
-	}
-
+	// Reload: saving the stale cp would undo the LastReportID that Send saved.
+	cp, err := w.storage.GetChat(chatID)
 	if err != nil {
-		slog.Error("Failed to send daily report", "chatID", chatID, "error", err)
+		slog.Error("Failed to update LastReportSent", "chatID", chatID, "error", err)
 		return
 	}
-
 	cp.LastReportSent = now
 	if err := w.storage.SetChat(chatID, &cp); err != nil {
 		slog.Error("Failed to update LastReportSent", "chatID", chatID, "error", err)

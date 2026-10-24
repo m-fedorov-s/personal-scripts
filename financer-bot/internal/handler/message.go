@@ -3,6 +3,7 @@ package handler
 import (
 	"context"
 	"financer/internal/parser"
+	"financer/internal/report"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
@@ -44,6 +45,6 @@ func (h *MessageHandler) Handle(ctx context.Context, b *bot.Bot, update *models.
 		slog.Error("Failed to save chat settings", "chatID", chatID, "error", err)
 	}
 	if chatSettings.ImmediateReports {
-		h.Reply(ctx, b, update, chatSettings.Report())
+		report.Send(ctx, b, h.Storage, report.Balance, chatID, update.Message.MessageThreadID, &update.Message.ID)
 	}
 }

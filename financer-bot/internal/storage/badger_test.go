@@ -74,6 +74,66 @@ func TestBadgerStorage(t *testing.T) {
 	}
 }
 
+func TestBadgerStorage_LastReportID(t *testing.T) {
+	db, cleanup := openTestDB(t)
+	defer cleanup()
+
+	s, err := NewBadgerStorage(db)
+	if err != nil {
+		t.Fatalf("NewBadgerStorage() error = %v", err)
+	}
+
+	// nil means no previous report and must stay nil.
+	if err := s.SetChat(1, &ChatProfile{}); err != nil {
+		t.Fatalf("SetChat() error = %v", err)
+	}
+	got, err := s.GetChat(1)
+	if err != nil {
+		t.Fatalf("GetChat() error = %v", err)
+	}
+	if got.LastReportID != nil {
+		t.Errorf("GetChat() LastReportID = %d, want nil", *got.LastReportID)
+	}
+
+	id := 4217
+	if err := s.SetChat(2, &ChatProfile{LastReportID: &id}); err != nil {
+		t.Fatalf("SetChat() error = %v", err)
+	}
+	got, err = s.GetChat(2)
+	if err != nil {
+		t.Fatalf("GetChat() error = %v", err)
+	}
+	if got.LastReportID == nil || *got.LastReportID != id {
+		t.Errorf("GetChat() LastReportID = %v, want %d", got.LastReportID, id)
+	}
+}
+
+// A report time of 00:00 is all zero fields, which gob omits; the pointer
+// must still come back non-nil or the chat silently stops getting reports.
+func TestBadgerStorage_MidnightReportTime(t *testing.T) {
+	db, cleanup := openTestDB(t)
+	defer cleanup()
+
+	s, err := NewBadgerStorage(db)
+	if err != nil {
+		t.Fatalf("NewBadgerStorage() error = %v", err)
+	}
+
+	if err := s.SetChat(1, &ChatProfile{ReportTime: &DayTime{Hour: 0, Minute: 0}}); err != nil {
+		t.Fatalf("SetChat() error = %v", err)
+	}
+	got, err := s.GetChat(1)
+	if err != nil {
+		t.Fatalf("GetChat() error = %v", err)
+	}
+	if got.ReportTime == nil {
+		t.Fatal("GetChat() ReportTime = nil, want 00:00")
+	}
+	if got.ReportTime.Hour != 0 || got.ReportTime.Minute != 0 {
+		t.Errorf("GetChat() ReportTime = %+v, want 00:00", *got.ReportTime)
+	}
+}
+
 func TestBadgerStorage_GetNonExistentChat(t *testing.T) {
 	tmpDir, _ := os.MkdirTemp("", "badger-test-empty")
 	defer os.RemoveAll(tmpDir)
