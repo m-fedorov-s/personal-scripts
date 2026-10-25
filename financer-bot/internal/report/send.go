@@ -23,6 +23,9 @@ const (
 	Balance
 )
 
+// CycleDesignData is the callback data of the button that cycles a chat's chart design.
+const CycleDesignData = "cycle_chart_design"
+
 // Send sends a report of the given kind to chatID, in threadID, replying to
 // replyTo unless it is nil. It then deletes the chat's previous report, so a
 // chat only shows the latest one.
@@ -53,6 +56,9 @@ func Send(ctx context.Context, tgBot *bot.Bot, store storage.Storage, kind Kind,
 			Caption:          text,
 			ParseMode:        models.ParseModeHTML,
 			ReplyToMessageID: replyToID,
+			ReplyMarkup: &models.InlineKeyboardMarkup{InlineKeyboard: [][]models.InlineKeyboardButton{
+				{{Text: "Cycle design", CallbackData: CycleDesignData}},
+			}},
 		})
 	} else {
 		msg, err = tgBot.SendMessage(ctx, &bot.SendMessageParams{

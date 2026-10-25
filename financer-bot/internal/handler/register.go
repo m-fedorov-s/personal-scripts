@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"financer/internal/report"
 	"financer/internal/storage"
 	"github.com/go-telegram/bot"
 )
@@ -14,6 +15,7 @@ func RegisterHandlers(b *bot.Bot, s storage.Storage, reschedule chan *storage.Da
 	setReportTimeHandler := &SetReportTimeHandler{baseHandler}
 	reportHandler := &ReportHandler{baseHandler}
 	toggleReportHandler := &ToggleReportHandler{baseHandler}
+	cycleDesignHandler := &CycleDesignHandler{baseHandler}
 
 	return []bot.Option{
 		bot.WithDefaultHandler(msgHandler.Handle),
@@ -23,5 +25,6 @@ func RegisterHandlers(b *bot.Bot, s storage.Storage, reschedule chan *storage.Da
 		bot.WithMessageTextHandler("/setReportTime", bot.MatchTypePrefix, setReportTimeHandler.Handle),
 		bot.WithMessageTextHandler("/report", bot.MatchTypeExact, reportHandler.Handle),
 		bot.WithMessageTextHandler("/toggleReport", bot.MatchTypeExact, toggleReportHandler.Handle),
+		bot.WithCallbackQueryDataHandler(report.CycleDesignData, bot.MatchTypeExact, cycleDesignHandler.Handle),
 	}
 }
