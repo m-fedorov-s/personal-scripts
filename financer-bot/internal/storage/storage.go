@@ -36,6 +36,7 @@ type ChatProfile struct {
 	ImmediateReports bool
 	LastReportSent   time.Time
 	LastReportID     *int // message ID of the latest report, nil if none
+	ChartDesign      ChartDesign
 }
 
 var NotFoundError = fmt.Errorf("Object not found")

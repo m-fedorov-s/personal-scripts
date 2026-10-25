@@ -9,6 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"financer/internal/chart"
 	"financer/internal/storage"
 )
 
@@ -170,10 +171,13 @@ func TestGenerate_CurrentBalance(t *testing.T) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// generateSpendingChart — PNG output
+// chart.PNG — PNG output
 // ─────────────────────────────────────────────────────────────────────────────
 
-func TestGenerateSpendingChart_ValidPNG(t *testing.T) {
+// testDayLimit is below one of the amounts recorded in these tests.
+const testDayLimit = 100
+
+func TestChartPNG_ValidPNG(t *testing.T) {
 	tests := []struct {
 		name    string
 		records []storage.Record
@@ -218,7 +222,7 @@ func TestGenerateSpendingChart_ValidPNG(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			pngBytes, err := generateSpendingChart(tt.records, tt.now)
+			pngBytes, err := chart.PNG(tt.records, testDayLimit, storage.ChartBars, tt.now)
 			require.NoError(t, err)
 			require.NotEmpty(t, pngBytes, "chart must not be empty")
 
@@ -236,9 +240,9 @@ func TestGenerateSpendingChart_ValidPNG(t *testing.T) {
 	}
 }
 
-// TestGenerateSpendingChart_RecordsOutsideMonthAreExcluded verifies that
+// TestChartPNG_RecordsOutsideMonthAreExcluded verifies that
 // records from previous months do not appear in the chart data.
-func TestGenerateSpendingChart_RecordsOutsideMonthAreExcluded(t *testing.T) {
+func TestChartPNG_RecordsOutsideMonthAreExcluded(t *testing.T) {
 	// We can't inspect the bar values directly, but we can verify the function
 	// does not error and returns a valid PNG even when all records are outside
 	// the current month.
@@ -246,7 +250,7 @@ func TestGenerateSpendingChart_RecordsOutsideMonthAreExcluded(t *testing.T) {
 		{Amount: 999, Date: time.Date(2024, 2, 28, 10, 0, 0, 0, time.UTC)}, // previous month
 		{Amount: 888, Date: time.Date(2024, 1, 15, 10, 0, 0, 0, time.UTC)}, // two months ago
 	}
-	pngBytes, err := generateSpendingChart(records, fixedNow)
+	pngBytes, err := chart.PNG(records, testDayLimit, storage.ChartBars, fixedNow)
 	require.NoError(t, err)
 	require.NotEmpty(t, pngBytes)
 }
