@@ -36,6 +36,7 @@ type ChatProfile struct {
 	ImmediateReports  bool
 	LastDailyReportAt time.Time
 	LastReportID      *int // message ID of the latest report, nil if none
+	LastReportBuiltAt *time.Time
 	ChartDesign       ChartDesign
 }
 

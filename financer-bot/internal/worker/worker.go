@@ -158,7 +158,7 @@ func (w *ReportWorker) sendReport(ctx context.Context, chatID int64, cp storage.
 		return
 	}
 
-	// Reload: saving the stale cp would undo the LastReportID that Send saved.
+	// Reload: saving the stale cp would undo the report ID and build time that Send saved.
 	cp, err := w.storage.GetChat(chatID)
 	if err != nil {
 		slog.Error("Failed to update LastDailyReportAt", "chatID", chatID, "error", err)

@@ -27,13 +27,16 @@ const (
 const CycleDesignData = "cycle_chart_design"
 
 // Send sends a report of the given kind to chatID, in threadID, replying to
-// replyTo unless it is nil. It then deletes the chat's previous report, so a
-// chat only shows the latest one.
+// replyTo unless it is nil. It then deletes the chat's previous report unless
+// that one was built in a different UTC month, so a chat keeps each month's
+// last report.
 //
 // It returns an error only when the report was not sent. Failing to save the
-// new message ID or to delete the previous report is logged and ignored.
+// new report's ID and build time or to delete the previous report is logged
+// and ignored.
 func Send(ctx context.Context, tgBot *bot.Bot, store storage.Storage, kind Kind, chatID int64, threadID int, replyTo *int) error {
-	text, chart, err := build(store, kind, chatID)
+	now := time.Now()
+	text, chart, err := build(store, kind, chatID, now)
 	if err != nil {
 		slog.Error("Failed to build report", "chatID", chatID, "error", err)
 		return err
@@ -77,17 +80,19 @@ func Send(ctx context.Context, tgBot *bot.Bot, store storage.Storage, kind Kind,
 	// Load the profile fresh: it may have changed while the report was sent.
 	cp, err := store.GetChat(chatID)
 	if err != nil {
-		slog.Error("Failed to read chat profile to save report ID", "chatID", chatID, "error", err)
+		slog.Error("Failed to read chat profile to save report ID and build time", "chatID", chatID, "error", err)
 		return nil
 	}
 	prevID := cp.LastReportID
+	prevBuiltAt := cp.LastReportBuiltAt
 	cp.LastReportID = &msg.ID
+	cp.LastReportBuiltAt = &now
 	if err := store.SetChat(chatID, &cp); err != nil {
-		slog.Error("Failed to save report ID", "chatID", chatID, "error", err)
+		slog.Error("Failed to save report ID and build time", "chatID", chatID, "error", err)
 		return nil
 	}
 
-	if prevID != nil {
+	if prevID != nil && !inDifferentUTCMonth(prevBuiltAt, now) {
 		// Telegram refuses to delete messages older than 48h or already deleted.
 		_, err := tgBot.DeleteMessage(ctx, &bot.DeleteMessageParams{ChatID: chatID, MessageID: *prevID})
 		if err != nil {
@@ -97,8 +102,20 @@ func Send(ctx context.Context, tgBot *bot.Bot, store storage.Storage, kind Kind,
 	return nil
 }
 
+// inDifferentUTCMonth reports whether the two times fall in different UTC
+// months. A nil prevBuiltAt (no build time recorded) counts as the same
+// month, so that report is deleted.
+func inDifferentUTCMonth(prevBuiltAt *time.Time, builtAt time.Time) bool {
+	if prevBuiltAt == nil {
+		return false
+	}
+	previousYear, previousMonth, _ := prevBuiltAt.UTC().Date()
+	year, month, _ := builtAt.UTC().Date()
+	return previousYear != year || previousMonth != month
+}
+
 // build returns the text of a report and, for a daily report, its chart.
-func build(store storage.Storage, kind Kind, chatID int64) (string, []byte, error) {
+func build(store storage.Storage, kind Kind, chatID int64, now time.Time) (string, []byte, error) {
 	cp, err := store.GetChat(chatID)
 	if err != nil {
 		return "", nil, fmt.Errorf("reading chat profile: %w", err)
@@ -107,7 +124,6 @@ func build(store storage.Storage, kind Kind, chatID int64) (string, []byte, erro
 		return cp.Report(), nil, nil
 	}
 
-	now := time.Now()
 	monthStart := time.Date(now.Year(), now.Month(), 1, 0, 0, 0, 0, now.Location())
 	records, err := store.GetRecords(chatID, monthStart)
 	if err != nil {

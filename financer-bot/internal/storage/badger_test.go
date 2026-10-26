@@ -108,6 +108,40 @@ func TestBadgerStorage_LastReportID(t *testing.T) {
 	}
 }
 
+func TestBadgerStorage_LastReportBuiltAt(t *testing.T) {
+	db, cleanup := openTestDB(t)
+	defer cleanup()
+
+	s, err := NewBadgerStorage(db)
+	if err != nil {
+		t.Fatalf("NewBadgerStorage() error = %v", err)
+	}
+
+	if err := s.SetChat(1, &ChatProfile{}); err != nil {
+		t.Fatalf("SetChat() error = %v", err)
+	}
+	got, err := s.GetChat(1)
+	if err != nil {
+		t.Fatalf("GetChat() error = %v", err)
+	}
+	if got.LastReportBuiltAt != nil {
+		t.Errorf("GetChat() LastReportBuiltAt = %v, want nil", *got.LastReportBuiltAt)
+	}
+
+	builtAt := time.Now()
+	if err := s.SetChat(2, &ChatProfile{LastReportBuiltAt: &builtAt}); err != nil {
+		t.Fatalf("SetChat() error = %v", err)
+	}
+	got, err = s.GetChat(2)
+	if err != nil {
+		t.Fatalf("GetChat() error = %v", err)
+	}
+	// Equal, not ==: gob drops the monotonic reading and may change the Location.
+	if got.LastReportBuiltAt == nil || !got.LastReportBuiltAt.Equal(builtAt) {
+		t.Errorf("GetChat() LastReportBuiltAt = %v, want %v", got.LastReportBuiltAt, builtAt)
+	}
+}
+
 // A report time of 00:00 is all zero fields, which gob omits; the pointer
 // must still come back non-nil or the chat silently stops getting reports.
 func TestBadgerStorage_MidnightReportTime(t *testing.T) {
