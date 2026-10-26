@@ -27,16 +27,16 @@ type DayTime struct {
 }
 
 type ChatProfile struct {
-	TopicID          int
-	DayLimit         int64
-	CurrentBalance   int64
-	LastRecordTime   time.Time
-	MaxRecordID      int64
-	ReportTime       *DayTime
-	ImmediateReports bool
-	LastReportSent   time.Time
-	LastReportID     *int // message ID of the latest report, nil if none
-	ChartDesign      ChartDesign
+	TopicID           int
+	DayLimit          int64
+	CurrentBalance    int64
+	LastRecordTime    time.Time
+	MaxRecordID       int64
+	ReportTime        *DayTime
+	ImmediateReports  bool
+	LastDailyReportAt time.Time
+	LastReportID      *int // message ID of the latest report, nil if none
+	ChartDesign       ChartDesign
 }
 
 var NotFoundError = fmt.Errorf("Object not found")

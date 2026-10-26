@@ -140,7 +140,7 @@ func (w *ReportWorker) dispatchReports(ctx context.Context) {
 
 		reportTime := time.Date(now.Year(), now.Month(), now.Day(), cp.ReportTime.Hour, cp.ReportTime.Minute, 0, 0, now.Location())
 
-		if (reportTime.Before(now) || reportTime.Equal(now)) && cp.LastReportSent.Before(reportTime) {
+		if (reportTime.Before(now) || reportTime.Equal(now)) && cp.LastDailyReportAt.Before(reportTime) {
 			select {
 			case <-ctx.Done():
 				return
@@ -161,11 +161,11 @@ func (w *ReportWorker) sendReport(ctx context.Context, chatID int64, cp storage.
 	// Reload: saving the stale cp would undo the LastReportID that Send saved.
 	cp, err := w.storage.GetChat(chatID)
 	if err != nil {
-		slog.Error("Failed to update LastReportSent", "chatID", chatID, "error", err)
+		slog.Error("Failed to update LastDailyReportAt", "chatID", chatID, "error", err)
 		return
 	}
-	cp.LastReportSent = now
+	cp.LastDailyReportAt = now
 	if err := w.storage.SetChat(chatID, &cp); err != nil {
-		slog.Error("Failed to update LastReportSent", "chatID", chatID, "error", err)
+		slog.Error("Failed to update LastDailyReportAt", "chatID", chatID, "error", err)
 	}
 }
